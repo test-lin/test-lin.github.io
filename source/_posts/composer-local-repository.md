@@ -3,7 +3,6 @@ title: satis composer 本地仓库搭建
 date: 2018-09-26
 tags:
 - composer
-- php
 - satis
 categories:
 - 工具
