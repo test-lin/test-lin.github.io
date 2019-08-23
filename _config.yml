@@ -5,10 +5,10 @@
 # Site
 title: 简杰的 Blog
 subtitle: 一起学习，一起进步
-description:
-keywords:
-author: Jani
-language: zh-CN
+description: 一起学习，一起进步
+keywords: php,blog,学习
+author: jani
+language: zh-Hans
 timezone: Asia/Shanghai
 
 # URL
@@ -74,7 +74,7 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: landscape
+theme: next
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
