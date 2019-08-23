@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="简杰的 Blog">
 <meta property="og:description" content="需求统计商品和品牌的浏览量。品牌和商品的关系是一对多。 实现方式直接改库最差的解决方案，会影响整个数据表的性能。 使用 redis 进行记录方法1： 每访问一次，添加一个消息队列（只需存在访问对向的 ID 即可）。通过定时任务每 5 分钟处理一次队列，处理完会删除队列。通过队列内容取指定的关联映射到 redis hash 中。为了保证数据不丢失，还有一个定时任务对数据库统计字段进行更新。队列格式和">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-23T14:52:34.367Z">
+<meta property="og:updated_time" content="2019-03-27T09:01:12.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浏览量统计">
 <meta name="twitter:description" content="需求统计商品和品牌的浏览量。品牌和商品的关系是一对多。 实现方式直接改库最差的解决方案，会影响整个数据表的性能。 使用 redis 进行记录方法1： 每访问一次，添加一个消息队列（只需存在访问对向的 ID 即可）。通过定时任务每 5 分钟处理一次队列，处理完会删除队列。通过队列内容取指定的关联映射到 redis hash 中。为了保证数据不丢失，还有一个定时任务对数据库统计字段进行更新。队列格式和">
@@ -553,7 +553,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -564,7 +564,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -575,7 +575,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

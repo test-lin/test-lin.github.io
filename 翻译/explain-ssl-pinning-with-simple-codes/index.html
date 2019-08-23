@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="ssl,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="HTTPS and SSL PinningHTTPS 和 SSL 固定There are two major factors in an HTTPS connection, a valid certificate that server presents during handshaking, and a cipher suite to be used for data encryption du">
+<meta name="keywords" content="ssl">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Explain SSL Pinning with simple codes(用简单代码解释 SSL 固定)">
+<meta property="og:url" content="http://yoursite.com/翻译/explain-ssl-pinning-with-simple-codes/index.html">
+<meta property="og:site_name" content="简杰的 Blog">
+<meta property="og:description" content="HTTPS and SSL PinningHTTPS 和 SSL 固定There are two major factors in an HTTPS connection, a valid certificate that server presents during handshaking, and a cipher suite to be used for data encryption du">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-08-23T15:15:50.935Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Explain SSL Pinning with simple codes(用简单代码解释 SSL 固定)">
+<meta name="twitter:description" content="HTTPS and SSL PinningHTTPS 和 SSL 固定There are two major factors in an HTTPS connection, a valid certificate that server presents during handshaking, and a cipher suite to be used for data encryption du">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/翻译/explain-ssl-pinning-with-simple-codes/">
+
+
+
+
+
+  <title>Explain SSL Pinning with simple codes(用简单代码解释 SSL 固定) | 简杰的 Blog</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?3094125d6c6fead2ab23a1ef8b067249";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">简杰的 Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">一起学习，一起进步</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/翻译/explain-ssl-pinning-with-simple-codes/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="jani">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/img/12641322.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="简杰的 Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Explain SSL Pinning with simple codes(用简单代码解释 SSL 固定)</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-31T10:47:21+08:00">
+                2019-03-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/翻译/" itemprop="url" rel="index">
+                    <span itemprop="name">翻译</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="HTTPS-and-SSL-Pinning"><a href="#HTTPS-and-SSL-Pinning" class="headerlink" title="HTTPS and SSL Pinning"></a>HTTPS and SSL Pinning</h2><h2 id="HTTPS-和-SSL-固定"><a href="#HTTPS-和-SSL-固定" class="headerlink" title="HTTPS 和 SSL 固定"></a>HTTPS 和 SSL 固定</h2><p>There are two major factors in an HTTPS connection, a valid certificate that server presents during handshaking, and a cipher suite to be used for data encryption during transmission. The certificate is the essential component and serves as a proof of identity of the server. The client will only trust the server if the server can provide a valid certificate that is signed by one of the trusted Certificate Authorities that come pre-installed in the client, otherwise, the connection will be aborted.</p>
+<p>HTTPS 连接有两个主要因素，握手时服务器提供一个有效证书，以及在传输过程中用于数据加密的密码套件。证书是基本组件，用作服务器身份的证明。只有当服务器能够提供由预装在客户机中的受信任证书颁发机构之一签名的有效证书时，客户机才会信任服务器，否则连接将被中止。</p>
+<p>An attacker can abuse this mechanism by either install a malicious root CA certificate to user devices so the client will trust all certificates that are signed by the attacker, or even worse, compromised a CA completely. Therefore relying on the certificates received from servers alone cannot guarantee the authenticity of the server, and it is vulnerable to potential man-in-the-middle attack.</p>
+<p>攻击者可以滥用此机制，方法是向用户设备安装恶意根CA证书，以便客户机信任由攻击者签名的所有证书，或者更糟，完全破坏CA。因此，仅依靠从服务器接收到的证书无法保证服务器的真实性，容易受到潜在的中间人攻击。</p>
+<p>SSL Pinning is a technique that we use in client side to avoid man-in-the-middle attack by validating the server certificates again even after SSL handshaking. The developers embed (or pin) a list of trustful certificates to the client application during development, and use them to compare against with the server certificates during runtime. If there is a mismatch between the server and the local copy of certificates, the connection will simply be disrupted, and no further user data will be even sent to that server. This enforcement ensures that the user devices are communicating only to the dedicated trustful servers.</p>
+<p>SSL 固定是我们在客户端使用的一种技术，通过在 SSL 握手之后再次验证服务器证书来避免中间人攻击。开发人员在开发期间向客户机应用程序嵌入(或pin)一组可信证书，并在运行时使用它们与服务器证书进行比较。如果服务器和证书的本地副本不匹配，则连接将被中断，甚至不再向该服务器发送用户数据。这种强制确保用户设备只与专用的可信服务器通信。</p>
+<p>However, developers must take extra caution in SSL Pinning, When a pinned certificate is expired and the server has updated a new certificate, since the new certificate is definitely different from the pinned one that the client currently has, the clients will not trust the updated certificate and therefore terminate the connection, in which no further communications can be established between clients and servers, so the application is basically ‘bricked’. Therefore, to avoid such situation, it is always advisable to pin the future certificates in the client applications before release.</p>
+<p>然而,开发人员必须采取额外的谨慎在SSL固定,当固定证书过期和服务器已经更新一个新的证书,自从新证书肯定是不同的固定客户目前,客户不会信任更新后的证书,因此终止连接,没有进一步的客户端和服务器之间的通信可以建立,所以应用程序基本上是“给”。因此，为了避免这种情况，通常建议在发布之前将未来的证书固定在客户机应用程序中。</p>
+<p>There are usually two ways we can achieve SSL Pinning in client applications. Pin either the whole certificate or its hashed public key. The hashed public key pinning is the preferred approach because the same private key can be used in signing the updated certificate, therefore we can save the trouble of pinning a new hashed public key for a new certificate, and reduce the risk of app ‘bricking’.</p>
+<p>通常有两种方法可以在客户机应用程序中实现SSL固定。对整个证书或其散列公钥进行Pin。散列公钥固定是首选方法，因为可以使用相同的私钥对更新后的证书进行签名，因此我们可以省去为新证书固定新散列公钥的麻烦，并降低应用程序“变黑”的风险。</p>
+<h2 id="Codes-In-Action"><a href="#Codes-In-Action" class="headerlink" title="Codes In Action"></a>Codes In Action</h2><h2 id="代码在行动"><a href="#代码在行动" class="headerlink" title="代码在行动"></a>代码在行动</h2><p>I am going to write a simple Android application that communicates with &lt;<a href="http://www.google.com&gt;" target="_blank" rel="noopener">www.google.com&gt;</a>, and use <a href="https://www.charlesproxy.com/" target="_blank" rel="noopener">Charles proxy</a> as a man-in-the-middle server, and finally demonstrate how an effective SSL Pining can stop man-in-the-middle attack.</p>
+<p>我将编写一个与 &lt;<a href="http://www.google.com&gt;" target="_blank" rel="noopener">www.google.com&gt;</a> 通信的简单 Android 应用程序，并使用<a href="https://www.charlesproxy.com/" target="_blank" rel="noopener">Charles proxy</a>作为中间人服务器，最后演示一个有效的 SSL Pining 如何阻止中间人攻击。</p>
+<p>Please note that the following codes are for educational purpose and they are not meant for use in production. Please consider using a mature solution from reputable libraries such as <a href="https://square.github.io/okhttp/3.x/okhttp/okhttp3/CertificatePinner.html" target="_blank" rel="noopener">okhttp</a> for your application.</p>
+<p>请注意以下代码是用于教育目的，并不用于生产。请考虑为您的应用程序使用来自声誉良好的库的成熟解决方案，比如 <a href="https://square.github.io/okhttp/3.x/okhttp/okhttp/okhttp3/certificatepinner.html" target="_blank" rel="noopener">okhttp</a>。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Read the pinned certificate from local (i.e., assets folder)</span></span><br><span class="line"><span class="comment">// 读取本地固定证书</span></span><br><span class="line">val inputStream = context.assets.open(<span class="string">"google.crt"</span>)</span><br><span class="line">val pinnedCertificate = CertificateFactory.getInstance(<span class="string">"X.509"</span>)</span><br><span class="line">    .generateCertificate(inputStream)</span><br><span class="line"></span><br><span class="line"><span class="comment">// Create a request to www.google.com</span></span><br><span class="line"><span class="comment">// 创建一个 www.google.com 的请求</span></span><br><span class="line">val url = URL(<span class="string">"https://www.google.com"</span>)</span><br><span class="line">val httpsUrlConnection = url.openConnection() as HttpsURLConnection</span><br><span class="line"></span><br><span class="line"><span class="comment">// Establish the connection</span></span><br><span class="line"><span class="comment">// 建立连接</span></span><br><span class="line">httpsUrlConnection.connect()</span><br><span class="line"></span><br><span class="line"><span class="comment">// Check the certificates and see if one of the server certificates</span></span><br><span class="line"><span class="comment">// matches the pinned certificate</span></span><br><span class="line"><span class="comment">// 检查证书，看看其中一个服务器证书是否与固定证书匹配</span></span><br><span class="line"><span class="keyword">if</span> (httpsUrlConnection.serverCertificates.contains(pinnedCertificate)) &#123;</span><br><span class="line">    <span class="comment">// Open stream</span></span><br><span class="line">    <span class="comment">// 打开流</span></span><br><span class="line">    httpsUrlConnection.inputStream</span><br><span class="line">    Log.d(<span class="string">"Pinning"</span>, <span class="string">"Server certificates validation successful"</span>)</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    Log.d(<span class="string">"Pinning"</span>, <span class="string">"Server certificates validation failed"</span>)</span><br><span class="line">    <span class="keyword">throw</span> SSLException(<span class="string">"Server certificates validation failed for google.com"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>The above codes are self-explanatory. The server certificates from <code>HttpsUrlConnection</code> are to be checked against with the local pinned certificate, the connection input stream will be open if there is a certificate match, and an <code>SSLException</code> will be thrown otherwise.</p>
+<p>以上代码是不言自明的。将使用本地固定证书检查来自 “HttpsUrlConnection” 的服务器证书，如果证书匹配，连接输入流将打开，否则将抛出 “SSLException”。</p>
+<p>I use openssl command to download the &lt;<a href="http://www.google.com&gt;" target="_blank" rel="noopener">www.google.com&gt;</a> certificate and save it as a pinned certificate in the assets folder. Just run this code and you will see message <code>Server certificates validation successful</code> in the logcat.</p>
+<p>我使用openssl命令下载证书，并将其保存为固定在assets文件夹中的证书。只要运行这段代码，您将在logcat中看到消息“服务器证书验证成功”。</p>
+<p>Now fire up Charles, and install Charles root certificate to the test device and configure test device proxy setting to the IP address of Charles service. With Charles root certificate being installed as trusted CA, Charles now acts as a man-in-the-middle, and all the certificate signed by Charles will be trusted by the client system by default. However, since we have pinned the legit &lt;<a href="http://www.google.com&gt;" target="_blank" rel="noopener">www.google.com&gt;</a> certificate in our demo application, the server certificate validation will fail in this case.</p>
+<p>现在启动 Charles，将 Charles 根证书安装到测试设备，并将测试设备代理设置配置为 Charles 服务的 IP 地址。将 Charles 根证书安装为 trusted CA 后，Charles 现在充当中间人的角色，在缺省情况下，客户机系统将信任 Charles 签名的所有证书。但是，由于我们在演示应用程序中固定了 legit 证书，因此在这种情况下服务器证书验证将失败。</p>
+<p>Run the test application with Charles proxy enabled, as expected, you will see <code>SSLException</code> with message <code>Server certificates validation failed for google.com</code> in the logcat.</p>
+<p>运行启用了 Charles proxy 的测试应用程序，如预期的那样，您将在 logcat 中看到 “SSLException” 和消息 “Server certificates validation failed for google.com”。</p>
+<h2 id="Further-reading"><a href="#Further-reading" class="headerlink" title="Further reading"></a>Further reading</h2><h2 id="扩展阅读"><a href="#扩展阅读" class="headerlink" title="扩展阅读"></a>扩展阅读</h2><p>The purpose of this post is just to provide an entry-level introduction to SSL Pinning technique, you can read the <a href="https://www.paypal-engineering.com/2015/10/14/key-pinning-in-mobile-applications/" target="_blank" rel="noopener">original proposal</a> from Paypal engineering team, and learn more about the <a href="https://www.synopsys.com/blogs/software-security/ineffective-certificate-pinning-implementations/" target="_blank" rel="noopener">bug</a> that results in ineffective SSL Pinning in Java/Android.</p>
+<p>本文的目的只是提供SSL固定技术的入门介绍，您可以阅读 Paypal 工程团队的<a href="https://www.paypal-engineering.com/2015/10/14/key-pinning-in-mobile-applications/" target="_blank" rel="noopener">original proposal</a> 了解更多关于导致 Java/Android 中SSL固定无效的 <a href="https://www.synopsys.com/blogs/software-security/ineffective-certificate-pinning-implementations/" target="_blank" rel="noopener">bug</a>。</p>
+<p>Oct 23, 2018 （2018-10-23）</p>
+<p>author: Zhang QiChuan</p>
+<p>link: <a href="https://medium.com/@zhangqichuan/explain-ssl-pinning-with-simple-codes-eaee95b70507" target="_blank" rel="noopener">https://medium.com/@zhangqichuan/explain-ssl-pinning-with-simple-codes-eaee95b70507</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/img/wechatpay.jpg" alt="jani 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/img/alipay.jpg" alt="jani 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ssl/" rel="tag"># ssl</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/算法/two-sum/" rel="next" title="两数之和">
+                <i class="fa fa-chevron-left"></i> 两数之和
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/思考/如何确认功能的开发时间/" rel="prev" title="如何确认功能的开发时间">
+                如何确认功能的开发时间 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/img/12641322.jpg" alt="jani">
+            
+              <p class="site-author-name" itemprop="name">jani</p>
+              <p class="site-description motion-element" itemprop="description">一起学习，一起进步</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/test-lin" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:liberty_linlin@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTPS-and-SSL-Pinning"><span class="nav-number">1.</span> <span class="nav-text">HTTPS and SSL Pinning</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTPS-和-SSL-固定"><span class="nav-number">2.</span> <span class="nav-text">HTTPS 和 SSL 固定</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Codes-In-Action"><span class="nav-number">3.</span> <span class="nav-text">Codes In Action</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码在行动"><span class="nav-number">4.</span> <span class="nav-text">代码在行动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Further-reading"><span class="nav-number">5.</span> <span class="nav-text">Further reading</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#扩展阅读"><span class="nav-number">6.</span> <span class="nav-text">扩展阅读</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">jani</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

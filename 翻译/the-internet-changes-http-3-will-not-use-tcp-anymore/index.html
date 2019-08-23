@@ -1,0 +1,1200 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="http,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="QUIC is the protocol underlying the next version of HTTPQUIC 是下一个版本 HTTP 的基础协议the Internet Engineering Task Force (IETF) has revealed that the third official version of HyperText Transfer Protocol (HT">
+<meta name="keywords" content="http">
+<meta property="og:type" content="article">
+<meta property="og:title" content="The Internet changes: HTTP&#x2F;3 will not use TCP anymore(因特网变更：HTTP&#x2F;3 将不再使用 TCP)">
+<meta property="og:url" content="http://yoursite.com/翻译/the-internet-changes-http-3-will-not-use-tcp-anymore/index.html">
+<meta property="og:site_name" content="简杰的 Blog">
+<meta property="og:description" content="QUIC is the protocol underlying the next version of HTTPQUIC 是下一个版本 HTTP 的基础协议the Internet Engineering Task Force (IETF) has revealed that the third official version of HyperText Transfer Protocol (HT">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/img/review/1_E90CoPNTa24ekQ85LEyrgg.png">
+<meta property="og:image" content="http://yoursite.com/img/review/1_cWUBE5wABDOeBZvajVy0eQ.png">
+<meta property="og:updated_time" content="2019-08-23T15:15:40.486Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="The Internet changes: HTTP&#x2F;3 will not use TCP anymore(因特网变更：HTTP&#x2F;3 将不再使用 TCP)">
+<meta name="twitter:description" content="QUIC is the protocol underlying the next version of HTTPQUIC 是下一个版本 HTTP 的基础协议the Internet Engineering Task Force (IETF) has revealed that the third official version of HyperText Transfer Protocol (HT">
+<meta name="twitter:image" content="http://yoursite.com/img/review/1_E90CoPNTa24ekQ85LEyrgg.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/翻译/the-internet-changes-http-3-will-not-use-tcp-anymore/">
+
+
+
+
+
+  <title>The Internet changes: HTTP/3 will not use TCP anymore(因特网变更：HTTP/3 将不再使用 TCP) | 简杰的 Blog</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?3094125d6c6fead2ab23a1ef8b067249";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">简杰的 Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">一起学习，一起进步</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/翻译/the-internet-changes-http-3-will-not-use-tcp-anymore/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="jani">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/img/12641322.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="简杰的 Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">The Internet changes: HTTP/3 will not use TCP anymore(因特网变更：HTTP/3 将不再使用 TCP)</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-14T11:02:24+08:00">
+                2019-04-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/翻译/" itemprop="url" rel="index">
+                    <span itemprop="name">翻译</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="QUIC-is-the-protocol-underlying-the-next-version-of-HTTP"><a href="#QUIC-is-the-protocol-underlying-the-next-version-of-HTTP" class="headerlink" title="QUIC is the protocol underlying the next version of HTTP"></a>QUIC is the protocol underlying the next version of HTTP</h2><h2 id="QUIC-是下一个版本-HTTP-的基础协议"><a href="#QUIC-是下一个版本-HTTP-的基础协议" class="headerlink" title="QUIC 是下一个版本 HTTP 的基础协议"></a>QUIC 是下一个版本 HTTP 的基础协议</h2><p>the Internet Engineering Task Force (<strong>IETF</strong>) has revealed that the third official version of HyperText Transfer Protocol (HTTP) <strong>will not use TCP anymore</strong>. Instead, it will run over the QUIC protocol first developed by Google back in 2012.</p>
+<p>因特网工程工作组（Internet Engineering Task Force 简称：<strong>IETF</strong>）透露，第三个官方版本的超文本传输协议（HyperText Transfer Protocol 简称：HTTP）<strong>将不再使用 TCP</strong>。反而，它将运行 2012 年由谷歌首次开发的 QUIC 协议。</p>
+<h2 id="WHAT-IS-QUIC"><a href="#WHAT-IS-QUIC" class="headerlink" title="WHAT IS QUIC?"></a>WHAT IS QUIC?</h2><h2 id="什么是-QUIC？"><a href="#什么是-QUIC？" class="headerlink" title="什么是 QUIC？"></a>什么是 QUIC？</h2><p><strong>Quick UDP Internet Connections (QUIC)</strong> is, as its name states, a transport layer protocol based on multiplexed UDP connections. In fact, QUIC uses a combination of TCP + TLS + SPDY over UDP with several enhancements with respect to the current HTTP/2 over TCP implementation.</p>
+<p><strong>快速 UDP 因特网连接（Quick UDP Internet Connections 简称：QUIC）</strong> 是一种基于多路复用的 UDP 连接的传输层协议。事实上，QUIC 使用了 TCP + TLS + SPDY over UDP 与当前 HTTP/2 over TCP 实现的几个增强功能的组合。</p>
+<p>The <strong>IETF has been working on a standardized version of Google’s QUIC</strong> since 2016, and it was recently that they announced their intention to include it for the new HTTP/3 version. However, the IETF QUIC version already diverged significantly from the original QUIC design.</p>
+<p>IETF 自 2016 年以来一直致力于开发标准化的 Google QUIC 版本，最近他们宣布打算将其用于新的 HTTP/3 版本。然而，IETF 的 QUIC 版本已经与原来的 QUIC 设计有了很大的不同。</p>
+<p><img src="/img/review/1_E90CoPNTa24ekQ85LEyrgg.png" alt><br>Position of HTTP/3 and QUIC in the protocol stack<br>HTTP/3 和 QUIC 在协议栈中的位置</p>
+<p>QUIC protocol aims for <strong>simplicity and speed while maintaining security</strong> thanks to the TLS 1.3 encryption. They developed a more efficient protocol in terms of connection establishment and data transfer. <a href="https://docs.google.com/document/d/1gY9-YNDNAB1eip-RTPbqphgySwSNSDHLq9D5Bty4FSU/edit" target="_blank" rel="noopener">According to Google</a>, <strong>QUIC handshakes frequently require zero roundtrips</strong> before sending payload, as compared to 1–3 roundtrips for TCP+TLS. Actually, the first connection ever requires one roundtrip and the followings will work with zero.</p>
+<p>由于采用了 TLS 1.3 加密，QUIC 协议旨在简化和提高速度，同时保持安全性。他们在建立连接和数据传输方面开发了一种更有效的协议。<a href="https://docs.google.com/document/d/1gY9-YNDNAB1eip-RTPbqphgySwSNSDHLq9D5Bty4FSU/edit" target="_blank" rel="noopener">据谷歌称</a>，与 TCP + TLS 的 1-3 次往返相比，Quic握手在发送有效负载之前通常需要<strong>0次往返</strong>。实际上，第一次连接需要一次往返，下面的内容将不往返。</p>
+<p>Furthermore, it <strong>deals better with packet loss than the current TCP</strong>. Every retransmitted packet consumes a new sequence number, hence eliminating ambiguities and preventing losses from causing RTO. As <a href="https://docs.google.com/presentation/d/15e1bLKYeN56GL1oTJSF9OZiUsI-rcxisLo9dEyDkWQs/edit#slide=id.g5b4208ab1_0_272" target="_blank" rel="noopener">Jana Iyengar from IETF</a> states, QUIC is not only a redefinition of the Internet transport layer but a <strong>reinvention to do the transport right</strong>.</p>
+<p>此外，它<strong>比当前的 TCP 更能处理数据包丢失</strong>。每一个重新传输的包都会消耗一个新的序列号，因此消除了模糊性，并防止了造成 RTO 的损失。正如<a href="https://docs.google.com/presentation/d/15e1bLKYeN56GL1oTJSF9OZiUsI-rcxisLo9dEyDkWQs/edit#slide=id.g5b4208ab1_0_272" target="_blank" rel="noopener">来自 IETF 的 Jana Iyengar</a> 所说，QUIC 不仅是对互联网传输层的重新定义，而且是对实现传输权的重新定义。</p>
+<p>At the moment, only 1.2 % of the top websites support <a href="https://w3techs.com/technologies/details/ce-quic/all/all" target="_blank" rel="noopener">QUIC</a>, but they are generally high-traffic sites: almost every Google service supports their own QUIC protocol.</p>
+<p>目前，只有 1.2% 的顶级网站支持 QUIC，但它们通常是高流量的网站：几乎每个谷歌服务都支持自己的 QUIC 协议。</p>
+<h2 id="IS-QUIC-SECURE"><a href="#IS-QUIC-SECURE" class="headerlink" title="IS QUIC SECURE?"></a>IS QUIC SECURE?</h2><h2 id="QUIC-是安全的？"><a href="#QUIC-是安全的？" class="headerlink" title="QUIC 是安全的？"></a>QUIC 是安全的？</h2><p>QUIC first development included its own encryption. However, it was just a temporary implementation destined to be replaced by <strong>TLS 1.3 as described by the IETF</strong>.</p>
+<p>QUIC 的第一个开发包括它自己的加密。然而，正如 IETF 所描述的，它只是一个临时的实现，注定要被 TLS 1.3 所取代。</p>
+<p>Actually, the connection establishment strategy of QUIC is based on the combination of crypto and transport handshake.</p>
+<p>实际上，QUIC 的连接建立策略是基于加密和传输握手的结合。</p>
+<blockquote>
+<p>QUIC relies on a combined cryptographic and transport handshake to minimize connection establishment latency.</p>
+<p>QUIC 依赖于密码和传输握手的组合，以最小化连接建立延迟。</p>
+</blockquote>
+<p><img src="/img/review/1_cWUBE5wABDOeBZvajVy0eQ.png" alt><br>Integration of QUIC and TLS, adapted from the IETF’s draft of “Using Transport Layer Security (TLS) to Secure QUIC”.<br>QUIC 和 TLS 的集成，改编自 IETF 的 “使用传输层安全性（Transport Layer Security 简称：TLS）保护 QUIC” 草案。</p>
+<p>With QUIC, Everything will be encrypted by default. Nevertheless, there are indeed <strong>security risks</strong> with QUIC as with any other technology.</p>
+<p>使用 QUIC，默认情况下将加密所有内容。然而，与其他技术一样，QUIC 确实存在<strong>安全风险</strong>。</p>
+<p>The work of <a href="https://www.cc.gatech.edu/~aboldyre/papers/quic.pdf" target="_blank" rel="noopener">Robert Lychev and Samuel Jero</a> in 2015 reported several weaknesses of the protocol. QUIC <strong>performance can be degraded by attacks</strong> like the Server Config Replay Attack. However, <strong>the confidentiality and the authenticity of the data seem to be properly secured</strong> according to their security model and tests.</p>
+<p><a href="https://www.cc.gatech.edu/~aboldyre/papers/quic.pdf" target="_blank" rel="noopener">Robert Lychev 和 Samuel Jero</a> 在 2015 年的研究报告了该协议的几个弱点。像服务器配置重放攻击这样的攻击会<strong>降低 QUIC 性能</strong>。然而，根据安全模型和测试，数据的机密性和真实性似乎得到了适当的保护。</p>
+<p><a href="https://medium.com/drill/understanding-event-driven-architectures-eda-the-paradigm-of-the-future-7ae632f056bb" target="_blank" rel="noopener">Understanding Event-Driven Architectures (EDA): the paradigm of the future</a></p>
+<p><a href="https://medium.com/drill/understanding-event-driven-architectures-eda-the-paradigm-of-the-future-7ae632f056bb" target="_blank" rel="noopener">理解事件驱动的architectures（EDA）：“范式”</a></p>
+<p><a href="https://medium.com/drill/btc-case-study-applying-basic-digital-signal-processing-into-financial-data-ec34cd47c77b" target="_blank" rel="noopener">BITCOIN case study: applying basic Digital Signal Processing into financial data</a></p>
+<p><a href="https://medium.com/drill/btc-case-study-applying-basic-digital-signal-processing-into-financial-data-ec34cd47c77b" target="_blank" rel="noopener">BITCOIN 案例研究：将基本数字信号处理应用于金融数据</a></p>
+<p>If you want to learn more about QUIC and how it will be integrated into the next version of HTTP, I strongly recommend you to check the official documentation from Google and the drafts published by IETF. You can find them in the bibliography of this article!</p>
+<p>如果您想了解更多关于 QUIC 的信息，以及如何将其集成到下一个 HTTP 版本中，我强烈建议您查看来自 Google 的官方文档和 IETF 发布的草稿。你可以在这篇文章的参考书目中找到它们！</p>
+<p>Innovation is always spinning forward. Just like a Drill.</p>
+<p>创新总是向前旋转。就像一个练习。</p>
+<h2 id="BIBLIOGRAPHY"><a href="#BIBLIOGRAPHY" class="headerlink" title="BIBLIOGRAPHY"></a>BIBLIOGRAPHY</h2><h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>[1] ”QUIC, a multiplexed stream transport over UDP — The Chromium Projects”, Chromium.org. [Online]. Available: <a href="https://www.chromium.org/quic" target="_blank" rel="noopener">https://www.chromium.org/quic</a>. [Accessed: 18- Nov- 2018]</p>
+<p>[2] M. Thomson, “draft-ietf-quic-transport-16 — QUIC: A UDP-Based Multiplexed and Secure Transport”, Tools.ietf.org, 2018. [Online]. Available: <a href="https://tools.ietf.org/html/draft-ietf-quic-transport-16" target="_blank" rel="noopener">https://tools.ietf.org/html/draft-ietf-quic-transport-16</a>. [Accessed: 18- Nov- 2018]</p>
+<p>[3] S. Turner, “draft-ietf-quic-tls-03 — Using Transport Layer Security (TLS) to Secure QUIC”, Tools.ietf.org, 2018. [Online]. Available: <a href="https://tools.ietf.org/html/draft-ietf-quic-tls-03#section-3" target="_blank" rel="noopener">https://tools.ietf.org/html/draft-ietf-quic-tls-03#section-3</a>. [Accessed: 18- Nov- 2018]</p>
+<p>[4] E. Rescorla, “The Transport Layer Security (TLS) Protocol Version 1.3”, Tools.ietf.org, 2018. [Online]. Available: <a href="https://tools.ietf.org/id/draft-ietf-tls-tls13-23.html" target="_blank" rel="noopener">https://tools.ietf.org/id/draft-ietf-tls-tls13-23.html</a>. [Accessed: 18- Nov- 2018]</p>
+<p>[5] R. Lychev, S. Jero, A. Boldyreva and C. Nita-Rotaru, “How Secure and Quick is QUIC? Provable Security and Performance Analyses”, 2015. [Online]. Available: <a href="https://www.cc.gatech.edu/~aboldyre/papers/quic.pdf" target="_blank" rel="noopener">https://www.cc.gatech.edu/~aboldyre/papers/quic.pdf</a>. [Accessed: 18- Nov- 2018]</p>
+<p>Nov 18, 2018 （2018-11-18）</p>
+<p>author: Telmo Subira Rodriguez</p>
+<p>link: <a href="https://medium.com/drill/the-internet-changes-http-3-will-not-use-tcp-anymore-427e82eeadc0" target="_blank" rel="noopener">https://medium.com/drill/the-internet-changes-http-3-will-not-use-tcp-anymore-427e82eeadc0</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/img/wechatpay.jpg" alt="jani 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/img/alipay.jpg" alt="jani 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/http/" rel="tag"># http</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/回忆录/回想自己第一次写爬虫的经历/" rel="next" title="回想自己第一次写爬虫的经历">
+                <i class="fa fa-chevron-left"></i> 回想自己第一次写爬虫的经历
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/功能/table-status/" rel="prev" title="表状态程序管理应用">
+                表状态程序管理应用 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/img/12641322.jpg" alt="jani">
+            
+              <p class="site-author-name" itemprop="name">jani</p>
+              <p class="site-description motion-element" itemprop="description">一起学习，一起进步</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/test-lin" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:liberty_linlin@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#QUIC-is-the-protocol-underlying-the-next-version-of-HTTP"><span class="nav-number">1.</span> <span class="nav-text">QUIC is the protocol underlying the next version of HTTP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#QUIC-是下一个版本-HTTP-的基础协议"><span class="nav-number">2.</span> <span class="nav-text">QUIC 是下一个版本 HTTP 的基础协议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WHAT-IS-QUIC"><span class="nav-number">3.</span> <span class="nav-text">WHAT IS QUIC?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是-QUIC？"><span class="nav-number">4.</span> <span class="nav-text">什么是 QUIC？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IS-QUIC-SECURE"><span class="nav-number">5.</span> <span class="nav-text">IS QUIC SECURE?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#QUIC-是安全的？"><span class="nav-number">6.</span> <span class="nav-text">QUIC 是安全的？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BIBLIOGRAPHY"><span class="nav-number">7.</span> <span class="nav-text">BIBLIOGRAPHY</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文献"><span class="nav-number">8.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">jani</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
