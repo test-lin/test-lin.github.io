@@ -309,9 +309,9 @@
 
       <h2 class="post-title">
         
-            <a class="post-title-link" href="/工具/xdebug-install-and-config/" itemprop="url">
+            <a class="post-title-link" href="/工具/xdebug-use/" itemprop="url">
               
-                <span itemprop="name">1.1 Xdebug的安装配置</span>
+                <span itemprop="name">1.2 xdebug的实际运用</span>
               
             </a>
         
@@ -335,9 +335,9 @@
 
       <h2 class="post-title">
         
-            <a class="post-title-link" href="/工具/xdebug-use/" itemprop="url">
+            <a class="post-title-link" href="/工具/xdebug-install-and-config/" itemprop="url">
               
-                <span itemprop="name">1.2 xdebug的实际运用</span>
+                <span itemprop="name">1.1 Xdebug的安装配置</span>
               
             </a>
         
@@ -761,6 +761,28 @@
 
 
 
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'bvYdGuNcba0iIaGV2jMAQyWV-9Nh9j0Va',
+        appKey: 'xG35MDchd168iqtnj3iwQQia',
+        placeholder: '如你有更好的建议和想法，请留下吧',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
 
 
 
