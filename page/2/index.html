@@ -408,20 +408,23 @@
       
         
           
-          题目给出一个 32 位的有符号整数，你需要将这个整数中每位上的数字进行反转。
-示例 1:12输入: 123输出: 321
-示例 2:12输入: -123输出: -321
-示例 3:12输入: 120输出: 21
-注意:
-假设我们的环境只能存储得下 32 位的有符号整数，则其数值范围为 [$−2^{3
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/算法/reverse-integer/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给出一个 32 位的有符号整数，你需要将这个整数中每位上的数字进行反转。</p>
+<p><strong>示例 1:</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: 123</span><br><span class="line">输出: 321</span><br></pre></td></tr></table></figure></p>
+<p><strong>示例 2:</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: -123</span><br><span class="line">输出: -321</span><br></pre></td></tr></table></figure></p>
+<p><strong>示例 3:</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: 120</span><br><span class="line">输出: 21</span><br></pre></td></tr></table></figure></p>
+<p><strong>注意:</strong></p>
+<p>假设我们的环境只能存储得下 32 位的有符号整数，则其数值范围为 [$−2^{31}$,  $2^{31}$ − 1]。请根据这个假设，如果反转后整数溢出那么就返回 0。</p>
+<p><a href="https://leetcode-cn.com/problems/reverse-integer/" target="_blank" rel="noopener">题目链接</a></p>
+<h2 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h2><ul>
+<li>数学</li>
+</ul>
+<h2 id="个人解答"><a href="#个人解答" class="headerlink" title="个人解答"></a>个人解答</h2><p>疑问点：</p>
+<p>32 位的有符号整数需要怎么判断？</p>
+<p>思路：<br>整数转成字符串类型，循环字符串字母进行处理</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 方法1 使用弱语特征转换</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reverse</span><span class="params">($x)</span> </span>&#123;</span><br><span class="line">    $rev = <span class="string">''</span>;</span><br><span class="line">    $signed = <span class="string">''</span>;</span><br><span class="line"></span><br><span class="line">    $x = (string)$x;</span><br><span class="line">    <span class="keyword">for</span> ($i = <span class="number">0</span>; $i &lt; strlen($x); $i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> ($x&#123;$i&#125; == <span class="string">'-'</span>) &#123;</span><br><span class="line">            $signed = <span class="string">'-'</span>;</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        $rev = $x&#123;$i&#125; . $rev;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    $return = $signed . (int)$rev;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> ($return &lt; pow(<span class="number">-2</span>, <span class="number">31</span>) || (pow(<span class="number">2</span>, <span class="number">31</span>)<span class="number">-1</span>) &lt; $return) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> $return;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">## 方法2 根据题解解题，方法比较奇特，断点了几次才理解实际思路</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reverse</span><span class="params">($x)</span> </span>&#123;<span class="comment">// $x = 123;</span></span><br><span class="line">    $rev = <span class="number">0</span>;</span><br><span class="line">    $max_val = pow(<span class="number">2</span>, <span class="number">31</span>)<span class="number">-1</span>; <span class="comment">// 2147483647</span></span><br><span class="line">    $min_val = pow(<span class="number">-2</span>, <span class="number">31</span>); <span class="comment">// -2147483648</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> ($x) &#123;</span><br><span class="line">        $pop = $x % <span class="number">10</span>; <span class="comment">// 取值最后一位 123 % 10 = 3, 12 % 10 = 2, 1 % 10 = 1;</span></span><br><span class="line">        $x = bcdiv($x, <span class="number">10</span>); <span class="comment">// 值进位 $x = 12, $x = 1</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 3 &gt; 214748364.7 || (3 == 214748364.7 &amp;&amp; 2 &gt; 7)</span></span><br><span class="line">        <span class="keyword">if</span> ($rev &gt; bcdiv($max_val, <span class="number">10</span>) || ($rev == bcdiv($max_val, <span class="number">10</span>) &amp;&amp; $pop &gt; <span class="number">7</span>)) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="comment">// 3 &lt; -214748364.8 || (3 == -214748364.8 &amp;&amp; 2 &lt; -8)</span></span><br><span class="line">        <span class="keyword">if</span> ($rev &lt; bcdiv($min_val, <span class="number">10</span>) || ($rev == bcdiv($min_val, <span class="number">10</span>) &amp;&amp; $pop &lt; <span class="number">-8</span>)) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="comment">// 判断当前组装有没有越过范围，没有的话，判断当前是否和最大值除10后的值一样，再根据尾值判断是否越过范围</span></span><br><span class="line"></span><br><span class="line">        $rev = bcmul($rev, <span class="number">10</span>) + $pop; <span class="comment">// 返回的值 0*10+3, 3*10+2, 32*10+1</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> $rev;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="做题总结"><a href="#做题总结" class="headerlink" title="做题总结"></a>做题总结</h2><p>一开始没有静下心来收集和拆分难点，所以一直拖到现在才做，做的时候意外的简单。</p>
+
+          
         
       
     </div>
@@ -571,15 +574,30 @@
       
         
           
-          说明SSL(Secure Sockets Layer 安全套接层),及其继任者传输层安全（Transport Layer Security，TLS）是为网络通信提供安全及数据完整性的一种安全协议。而它的代表软件则是 OpenSSL。php 使用 openssl 函数则可以对 OpenSSL 进行调用
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/功能/SSL非对称加密/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>SSL(Secure Sockets Layer 安全套接层),及其继任者传输层安全（Transport Layer Security，TLS）是为网络通信提供安全及数据完整性的一种安全协议。而它的代表软件则是 OpenSSL。php 使用 openssl 函数则可以对 OpenSSL 进行调用。</p>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>非对称加密主要是通过 ssl 的公钥私钥都可以加密解密的特性来做的一个数据安全验证。使用到非对称加密技术的公司有支付宝、微博。大至交互流程如下：</p>
+<p><img src="/img/f0b9c2f51f2698c9f1b3163e0123e23e.png" alt></p>
+<p>前置准备</p>
+<ol>
+<li>服务端需要开放公钥</li>
+<li>接入方需要提供公钥给服务端</li>
+</ol>
+<p>请求与返回</p>
+<ol>
+<li>接入方请求服务端，使用自己的私钥生成加密串</li>
+<li>服务端接收请求，根据请求里的用户编号取接入方公钥</li>
+<li>根据接入方公钥对请求加密串进行校验</li>
+<li>服务端处理完后，使用服务端私钥为返回数据添加加密串</li>
+<li>接入方验证后进行指定处理</li>
+</ol>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line">$data = [</span><br><span class="line">    <span class="string">'account_id'</span> =&gt; <span class="number">1</span>,</span><br><span class="line">];</span><br><span class="line">$privateKeyId = openssl_pkey_get_private(file_get_contents(<span class="string">'id_rsa'</span>));</span><br><span class="line"></span><br><span class="line">openssl_sign(json_encode($data), $requestSign, $privateKeyId, OPENSSL_ALGO_SHA256);</span><br><span class="line"></span><br><span class="line">$data[<span class="string">'sign'</span>] = base64_encode($requestSign);</span><br><span class="line"></span><br><span class="line"><span class="comment">// ===== 请求接口 ====</span></span><br><span class="line"></span><br><span class="line">$request = $data;</span><br><span class="line">$sign = base64_decode($data[<span class="string">'sign'</span>]);</span><br><span class="line"><span class="keyword">unset</span>($request[<span class="string">'sign'</span>]);</span><br><span class="line"></span><br><span class="line">$userPublicKeyId = openssl_pkey_get_public(file_get_contents(<span class="string">'id_rsa.pub'</span>));</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (! openssl_verify(json_encode($request), $sign, $userPublicKeyId, OPENSSL_ALGO_SHA256)) &#123;</span><br><span class="line">    <span class="keyword">while</span> ($error = openssl_error_string()) &#123;</span><br><span class="line">        print_r($error);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$response = [</span><br><span class="line">    <span class="string">'status'</span> =&gt; <span class="number">200</span>,</span><br><span class="line">    <span class="string">'message'</span> =&gt; <span class="string">'hello world'</span></span><br><span class="line">];</span><br><span class="line"></span><br><span class="line">$severPrivateKeyId = openssl_pkey_get_private(file_get_contents(<span class="string">'private_key.pem'</span>));</span><br><span class="line"></span><br><span class="line">openssl_sign(json_encode($response), $responseSign, $severPrivateKeyId, OPENSSL_ALGO_SHA256);</span><br><span class="line"></span><br><span class="line">$response[<span class="string">'sign'</span>] = base64_encode($responseSign);</span><br><span class="line"></span><br><span class="line"><span class="comment">// ===== 接口响应 ====</span></span><br><span class="line"></span><br><span class="line">$ruslt = $response;</span><br><span class="line">$sign = base64_decode($ruslt[<span class="string">'sign'</span>]);</span><br><span class="line"><span class="keyword">unset</span>($ruslt[<span class="string">'sign'</span>]);</span><br><span class="line"></span><br><span class="line">$severPublicKeyId = openssl_pkey_get_public(file_get_contents(<span class="string">'public_key.pem'</span>));</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (! openssl_verify(json_encode($ruslt), $sign, $severPublicKeyId, OPENSSL_ALGO_SHA256)) &#123;</span><br><span class="line">    <span class="keyword">while</span> ($error = openssl_error_string()) &#123;</span><br><span class="line">        print_r($error);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 处理业务逻辑</span></span><br></pre></td></tr></table></figure>
+<h2 id="FQA"><a href="#FQA" class="headerlink" title="FQA"></a>FQA</h2><h3 id="为什么不是先使用服务端的公钥加密进行请求先呢？"><a href="#为什么不是先使用服务端的公钥加密进行请求先呢？" class="headerlink" title="为什么不是先使用服务端的公钥加密进行请求先呢？"></a>为什么不是先使用服务端的公钥加密进行请求先呢？</h3><p>我一开始构思时是这样想的，请求使用服务端公钥加密，接口返回使用接入方的私钥进行解密。感觉并没有什么毛病，但是细细一想，这里涉及到证书安全问题和请求验证问题。</p>
+<ol>
+<li>请求时使用的是服务端公钥，凭加密串上面的用户号是无法保证请求用户真实性</li>
+<li>响应时如果接入方私钥泄漏，就可以被人直接模拟支付回调了</li>
+</ol>
+
+          
         
       
     </div>
@@ -729,17 +747,14 @@
       
         
           
-          有很多人都对自己开发一个功能需要花费的时间什么不了解。报功能开发时间的时候总是靠感觉来。时间报长了还好解决，但是报的时间短了，自己就得加班才可以完成任务，抑或者完不成。
-思考那些因素影响了开发时间通常影响因素是功能逻辑不了解或太复杂、功能需求频繁变更以及自身技术不熟练导致的。
-1、功能需求频繁变更并
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/思考/如何确认功能的开发时间/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <p>有很多人都对自己开发一个功能需要花费的时间什么不了解。报功能开发时间的时候总是靠感觉来。时间报长了还好解决，但是报的时间短了，自己就得加班才可以完成任务，抑或者完不成。</p>
+<h2 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h2><h3 id="那些因素影响了开发时间"><a href="#那些因素影响了开发时间" class="headerlink" title="那些因素影响了开发时间"></a>那些因素影响了开发时间</h3><p>通常影响因素是功能逻辑不了解或太复杂、功能需求频繁变更以及自身技术不熟练导致的。</p>
+<p>1、功能需求频繁变更并不是自己的问题，可以要求增加开发时间，以防止自己每次都为变更买单。<br>2、逻辑不了解或太复杂需要花时间去理清，不要急着去开发，要不然很容易出现做着做着就去问细节的情况或做完被说和想要的完全不一样。<br>3、最后技术的问题就是自己的锅了，加班也无话可说（就当为自己学习买单，还是很有好处的）。</p>
+<h3 id="问功能需要花多少时间时，应该怎么回答"><a href="#问功能需要花多少时间时，应该怎么回答" class="headerlink" title="问功能需要花多少时间时，应该怎么回答"></a>问功能需要花多少时间时，应该怎么回答</h3><p>推荐不要马上随感觉来定时间，可以说：“在中午休息前给你答复可以吗？” 这样可以预留更多的时间给需求进行评估。如果别拒绝了，可以问下别人的底线：“这个功能最迟什么时候要？”。注意喔，这样问他很可以是很前端和测试的时间都算上去的，并不是单单后台开发的时间。如果连这个要求都拒绝了，那真的需要考虑换公司了。因为连功能什么时候需要完成都不清楚。</p>
+<h3 id="估错了任务时间该怎么办"><a href="#估错了任务时间该怎么办" class="headerlink" title="估错了任务时间该怎么办"></a>估错了任务时间该怎么办</h3><p>很多时候就算很认真的去预估开发时间，也会有估时过长，估时过短的问题。估时过长的还好，可以问上级要新需要来开发，或是学习都随你。估时过短并不是自己闷头加班去解决，这是最后的做法。应该提前向上级汇报，说明错估原因，尽可能的拿到更多的开发时间。如果你不向上级汇报导致项目被延期，所有后果将由自己承担。</p>
+<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>我们需要更加的了解自己的能力，那些地方花的时间过多了，那些地方可以做的更好。这些都是可能通过一次次统计去了解的。</p>
+
+          
         
       
     </div>
@@ -889,15 +904,36 @@
       
         
           
-          HTTPS and SSL PinningHTTPS 和 SSL 固定There are two major factors in an HTTPS connection, a valid certificate that server presents during handshaking, an
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/翻译/explain-ssl-pinning-with-simple-codes/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <h2 id="HTTPS-and-SSL-Pinning"><a href="#HTTPS-and-SSL-Pinning" class="headerlink" title="HTTPS and SSL Pinning"></a>HTTPS and SSL Pinning</h2><h2 id="HTTPS-和-SSL-固定"><a href="#HTTPS-和-SSL-固定" class="headerlink" title="HTTPS 和 SSL 固定"></a>HTTPS 和 SSL 固定</h2><p>There are two major factors in an HTTPS connection, a valid certificate that server presents during handshaking, and a cipher suite to be used for data encryption during transmission. The certificate is the essential component and serves as a proof of identity of the server. The client will only trust the server if the server can provide a valid certificate that is signed by one of the trusted Certificate Authorities that come pre-installed in the client, otherwise, the connection will be aborted.</p>
+<p>HTTPS 连接有两个主要因素，握手时服务器提供一个有效证书，以及在传输过程中用于数据加密的密码套件。证书是基本组件，用作服务器身份的证明。只有当服务器能够提供由预装在客户机中的受信任证书颁发机构之一签名的有效证书时，客户机才会信任服务器，否则连接将被中止。</p>
+<p>An attacker can abuse this mechanism by either install a malicious root CA certificate to user devices so the client will trust all certificates that are signed by the attacker, or even worse, compromised a CA completely. Therefore relying on the certificates received from servers alone cannot guarantee the authenticity of the server, and it is vulnerable to potential man-in-the-middle attack.</p>
+<p>攻击者可以滥用此机制，方法是向用户设备安装恶意根CA证书，以便客户机信任由攻击者签名的所有证书，或者更糟，完全破坏CA。因此，仅依靠从服务器接收到的证书无法保证服务器的真实性，容易受到潜在的中间人攻击。</p>
+<p>SSL Pinning is a technique that we use in client side to avoid man-in-the-middle attack by validating the server certificates again even after SSL handshaking. The developers embed (or pin) a list of trustful certificates to the client application during development, and use them to compare against with the server certificates during runtime. If there is a mismatch between the server and the local copy of certificates, the connection will simply be disrupted, and no further user data will be even sent to that server. This enforcement ensures that the user devices are communicating only to the dedicated trustful servers.</p>
+<p>SSL 固定是我们在客户端使用的一种技术，通过在 SSL 握手之后再次验证服务器证书来避免中间人攻击。开发人员在开发期间向客户机应用程序嵌入(或pin)一组可信证书，并在运行时使用它们与服务器证书进行比较。如果服务器和证书的本地副本不匹配，则连接将被中断，甚至不再向该服务器发送用户数据。这种强制确保用户设备只与专用的可信服务器通信。</p>
+<p>However, developers must take extra caution in SSL Pinning, When a pinned certificate is expired and the server has updated a new certificate, since the new certificate is definitely different from the pinned one that the client currently has, the clients will not trust the updated certificate and therefore terminate the connection, in which no further communications can be established between clients and servers, so the application is basically ‘bricked’. Therefore, to avoid such situation, it is always advisable to pin the future certificates in the client applications before release.</p>
+<p>然而,开发人员必须采取额外的谨慎在SSL固定,当固定证书过期和服务器已经更新一个新的证书,自从新证书肯定是不同的固定客户目前,客户不会信任更新后的证书,因此终止连接,没有进一步的客户端和服务器之间的通信可以建立,所以应用程序基本上是“给”。因此，为了避免这种情况，通常建议在发布之前将未来的证书固定在客户机应用程序中。</p>
+<p>There are usually two ways we can achieve SSL Pinning in client applications. Pin either the whole certificate or its hashed public key. The hashed public key pinning is the preferred approach because the same private key can be used in signing the updated certificate, therefore we can save the trouble of pinning a new hashed public key for a new certificate, and reduce the risk of app ‘bricking’.</p>
+<p>通常有两种方法可以在客户机应用程序中实现SSL固定。对整个证书或其散列公钥进行Pin。散列公钥固定是首选方法，因为可以使用相同的私钥对更新后的证书进行签名，因此我们可以省去为新证书固定新散列公钥的麻烦，并降低应用程序“变黑”的风险。</p>
+<h2 id="Codes-In-Action"><a href="#Codes-In-Action" class="headerlink" title="Codes In Action"></a>Codes In Action</h2><h2 id="代码在行动"><a href="#代码在行动" class="headerlink" title="代码在行动"></a>代码在行动</h2><p>I am going to write a simple Android application that communicates with &lt;<a href="http://www.google.com&gt;" target="_blank" rel="noopener">www.google.com&gt;</a>, and use <a href="https://www.charlesproxy.com/" target="_blank" rel="noopener">Charles proxy</a> as a man-in-the-middle server, and finally demonstrate how an effective SSL Pining can stop man-in-the-middle attack.</p>
+<p>我将编写一个与 &lt;<a href="http://www.google.com&gt;" target="_blank" rel="noopener">www.google.com&gt;</a> 通信的简单 Android 应用程序，并使用<a href="https://www.charlesproxy.com/" target="_blank" rel="noopener">Charles proxy</a>作为中间人服务器，最后演示一个有效的 SSL Pining 如何阻止中间人攻击。</p>
+<p>Please note that the following codes are for educational purpose and they are not meant for use in production. Please consider using a mature solution from reputable libraries such as <a href="https://square.github.io/okhttp/3.x/okhttp/okhttp3/CertificatePinner.html" target="_blank" rel="noopener">okhttp</a> for your application.</p>
+<p>请注意以下代码是用于教育目的，并不用于生产。请考虑为您的应用程序使用来自声誉良好的库的成熟解决方案，比如 <a href="https://square.github.io/okhttp/3.x/okhttp/okhttp/okhttp3/certificatepinner.html" target="_blank" rel="noopener">okhttp</a>。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Read the pinned certificate from local (i.e., assets folder)</span></span><br><span class="line"><span class="comment">// 读取本地固定证书</span></span><br><span class="line">val inputStream = context.assets.open(<span class="string">"google.crt"</span>)</span><br><span class="line">val pinnedCertificate = CertificateFactory.getInstance(<span class="string">"X.509"</span>)</span><br><span class="line">    .generateCertificate(inputStream)</span><br><span class="line"></span><br><span class="line"><span class="comment">// Create a request to www.google.com</span></span><br><span class="line"><span class="comment">// 创建一个 www.google.com 的请求</span></span><br><span class="line">val url = URL(<span class="string">"https://www.google.com"</span>)</span><br><span class="line">val httpsUrlConnection = url.openConnection() as HttpsURLConnection</span><br><span class="line"></span><br><span class="line"><span class="comment">// Establish the connection</span></span><br><span class="line"><span class="comment">// 建立连接</span></span><br><span class="line">httpsUrlConnection.connect()</span><br><span class="line"></span><br><span class="line"><span class="comment">// Check the certificates and see if one of the server certificates</span></span><br><span class="line"><span class="comment">// matches the pinned certificate</span></span><br><span class="line"><span class="comment">// 检查证书，看看其中一个服务器证书是否与固定证书匹配</span></span><br><span class="line"><span class="keyword">if</span> (httpsUrlConnection.serverCertificates.contains(pinnedCertificate)) &#123;</span><br><span class="line">    <span class="comment">// Open stream</span></span><br><span class="line">    <span class="comment">// 打开流</span></span><br><span class="line">    httpsUrlConnection.inputStream</span><br><span class="line">    Log.d(<span class="string">"Pinning"</span>, <span class="string">"Server certificates validation successful"</span>)</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    Log.d(<span class="string">"Pinning"</span>, <span class="string">"Server certificates validation failed"</span>)</span><br><span class="line">    <span class="keyword">throw</span> SSLException(<span class="string">"Server certificates validation failed for google.com"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>The above codes are self-explanatory. The server certificates from <code>HttpsUrlConnection</code> are to be checked against with the local pinned certificate, the connection input stream will be open if there is a certificate match, and an <code>SSLException</code> will be thrown otherwise.</p>
+<p>以上代码是不言自明的。将使用本地固定证书检查来自 “HttpsUrlConnection” 的服务器证书，如果证书匹配，连接输入流将打开，否则将抛出 “SSLException”。</p>
+<p>I use openssl command to download the &lt;<a href="http://www.google.com&gt;" target="_blank" rel="noopener">www.google.com&gt;</a> certificate and save it as a pinned certificate in the assets folder. Just run this code and you will see message <code>Server certificates validation successful</code> in the logcat.</p>
+<p>我使用openssl命令下载证书，并将其保存为固定在assets文件夹中的证书。只要运行这段代码，您将在logcat中看到消息“服务器证书验证成功”。</p>
+<p>Now fire up Charles, and install Charles root certificate to the test device and configure test device proxy setting to the IP address of Charles service. With Charles root certificate being installed as trusted CA, Charles now acts as a man-in-the-middle, and all the certificate signed by Charles will be trusted by the client system by default. However, since we have pinned the legit &lt;<a href="http://www.google.com&gt;" target="_blank" rel="noopener">www.google.com&gt;</a> certificate in our demo application, the server certificate validation will fail in this case.</p>
+<p>现在启动 Charles，将 Charles 根证书安装到测试设备，并将测试设备代理设置配置为 Charles 服务的 IP 地址。将 Charles 根证书安装为 trusted CA 后，Charles 现在充当中间人的角色，在缺省情况下，客户机系统将信任 Charles 签名的所有证书。但是，由于我们在演示应用程序中固定了 legit 证书，因此在这种情况下服务器证书验证将失败。</p>
+<p>Run the test application with Charles proxy enabled, as expected, you will see <code>SSLException</code> with message <code>Server certificates validation failed for google.com</code> in the logcat.</p>
+<p>运行启用了 Charles proxy 的测试应用程序，如预期的那样，您将在 logcat 中看到 “SSLException” 和消息 “Server certificates validation failed for google.com”。</p>
+<h2 id="Further-reading"><a href="#Further-reading" class="headerlink" title="Further reading"></a>Further reading</h2><h2 id="扩展阅读"><a href="#扩展阅读" class="headerlink" title="扩展阅读"></a>扩展阅读</h2><p>The purpose of this post is just to provide an entry-level introduction to SSL Pinning technique, you can read the <a href="https://www.paypal-engineering.com/2015/10/14/key-pinning-in-mobile-applications/" target="_blank" rel="noopener">original proposal</a> from Paypal engineering team, and learn more about the <a href="https://www.synopsys.com/blogs/software-security/ineffective-certificate-pinning-implementations/" target="_blank" rel="noopener">bug</a> that results in ineffective SSL Pinning in Java/Android.</p>
+<p>本文的目的只是提供SSL固定技术的入门介绍，您可以阅读 Paypal 工程团队的<a href="https://www.paypal-engineering.com/2015/10/14/key-pinning-in-mobile-applications/" target="_blank" rel="noopener">original proposal</a> 了解更多关于导致 Java/Android 中SSL固定无效的 <a href="https://www.synopsys.com/blogs/software-security/ineffective-certificate-pinning-implementations/" target="_blank" rel="noopener">bug</a>。</p>
+<p>Oct 23, 2018 （2018-10-23）</p>
+<p>author: Zhang QiChuan</p>
+<p>link: <a href="https://medium.com/@zhangqichuan/explain-ssl-pinning-with-simple-codes-eaee95b70507" target="_blank" rel="noopener">https://medium.com/@zhangqichuan/explain-ssl-pinning-with-simple-codes-eaee95b70507</a></p>
+
+          
         
       
     </div>
@@ -1047,20 +1083,26 @@
       
         
           
-          题目给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。
-你可以假设每种输入只会对应一个答案。但是，你不能重复利用这个数组中同样的元素。
-示例:
+            <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个整数数组 <code>nums</code> 和一个目标值 <code>target</code>，请你在该数组中找出和为目标值的那 <strong>两个</strong> 整数，并返回他们的数组下标。</p>
+<p>你可以假设每种输入只会对应一个答案。但是，你不能重复利用这个数组中同样的元素。</p>
+<p>示例:</p>
+<blockquote>
+<p>给定 nums = [2, 7, 11, 15], target = 9</p>
+<p>因为 nums[0] + nums[1] = 2 + 7 = 9<br>所以返回 [0, 1]</p>
+</blockquote>
+<p><a href="https://leetcode-cn.com/problems/two-sum/" target="_blank" rel="noopener">题目链接</a></p>
+<h2 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h2><ul>
+<li>数组</li>
+<li>哈希表</li>
+</ul>
+<h2 id="个人解答"><a href="#个人解答" class="headerlink" title="个人解答"></a>个人解答</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 方法1</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">twoSum</span><span class="params">($nums, $target)</span> </span>&#123;</span><br><span class="line">    $count = count($nums);</span><br><span class="line">    <span class="keyword">for</span> ($i=<span class="number">0</span>; $i &lt; $count; $i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> ($j=($i+<span class="number">1</span>); $j &lt; $count; $j++) &#123; <span class="comment">// $j 之是 $i+1 是因为不能重复利用数组中同样的元素。</span></span><br><span class="line">            <span class="keyword">if</span> (($nums[$i]+$nums[$j]) == $target) &#123;</span><br><span class="line">                <span class="keyword">return</span> [$i, $j];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> [];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 方法2：建立值键对应</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">twoSum</span><span class="params">($nums, $target)</span> </span>&#123;</span><br><span class="line">    $count = count($nums);</span><br><span class="line">    $values = [];</span><br><span class="line">    <span class="keyword">for</span> ($i=<span class="number">0</span>; $i &lt; $count; $i++) &#123;</span><br><span class="line">        $values[$nums[$i]] = $i;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> ($i=<span class="number">0</span>; $i &lt; $count; $i++) &#123;</span><br><span class="line">        $value = $target - $nums[$i];</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">isset</span>($values[$value])) &#123;</span><br><span class="line">            <span class="keyword">return</span> [$i, $values[$value]];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> [];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 方法3: 通过值找键</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">twoSum</span><span class="params">($nums, $target)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> ($i=<span class="number">0</span>; $i &lt; count($nums); $i++) &#123;</span><br><span class="line">        $searchValue = $target - $nums[$i];</span><br><span class="line">        <span class="comment">// array_search 是语言自带的函数，应该和方法2差不多。</span></span><br><span class="line">        <span class="keyword">if</span> ($key = array_search($searchValue, $nums)) &#123;</span><br><span class="line">            <span class="keyword">return</span> [$i, $key];</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">unset</span>($nums[$i]);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> [];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 方法4：匹配不到的值存放到数组中，方便后面查找</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">twoSum</span><span class="params">($nums, $target)</span> </span>&#123;</span><br><span class="line">    $values = [];</span><br><span class="line">    <span class="keyword">for</span> ($i=<span class="number">0</span>; $i &lt; count($nums); $i++) &#123;</span><br><span class="line">        $value = $target - $nums[$i];</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">isset</span>($values[$value])) &#123;</span><br><span class="line">            <span class="keyword">return</span> [$i, $values[$value]];</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        $values[$nums[$i]] = $i;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> [];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="做题总结"><a href="#做题总结" class="headerlink" title="做题总结"></a>做题总结</h2><p>虽然两数相加得到结果很简单，但是没有实现思路逃避了许久。后面看了解答的文字，不看代码。才以最简单的方式做出来。</p>
+<h2 id="未掌握知道点"><a href="#未掌握知道点" class="headerlink" title="未掌握知道点"></a>未掌握知道点</h2><ul>
+<li>空间/时间复杂度计算</li>
+<li>双循环掌握不好</li>
+</ul>
 
-给定 nums = [2, 7, 11, 15], target = 9
-因为 
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/算法/two-sum/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
         
       
     </div>
@@ -1210,18 +1252,15 @@
       
         
           
-          需求统计商品和品牌的浏览量。品牌和商品的关系是一对多。
-实现方式直接改库最差的解决方案，会影响整个数据表的性能。
-使用 redis 进行记录方法1：
-每访问一次，添加一个消息队列（只需存在访问对向的 ID 即可）。通过定时任务每 5 分钟处理一次队列，处理完会删除队列。通过队列内容取指定的关联映射到
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/功能/review/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><p>统计商品和品牌的浏览量。品牌和商品的关系是一对多。</p>
+<h2 id="实现方式"><a href="#实现方式" class="headerlink" title="实现方式"></a>实现方式</h2><h3 id="直接改库"><a href="#直接改库" class="headerlink" title="直接改库"></a>直接改库</h3><p>最差的解决方案，会影响整个数据表的性能。</p>
+<h3 id="使用-redis-进行记录"><a href="#使用-redis-进行记录" class="headerlink" title="使用 redis 进行记录"></a>使用 redis 进行记录</h3><p>方法1：</p>
+<p>每访问一次，添加一个消息队列（只需存在访问对向的 ID 即可）。通过定时任务每 5 分钟处理一次队列，处理完会删除队列。通过队列内容取指定的关联映射到 redis hash 中。为了保证数据不丢失，还有一个定时任务对数据库统计字段进行更新。队列格式和 hash 格式如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&apos;goods&apos; =&gt; [</span><br><span class="line">    &apos;1&apos; =&gt; 1, // 商品ID =&gt; 访问数量</span><br><span class="line">]</span><br><span class="line">&apos;brand&apos; =&gt; [</span><br><span class="line">    &apos;1&apos; =&gt;1, // 品牌ID =&gt; 访问数量</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>方法2：</p>
+<p>每次访问都进行直接追加。而读取时直接读取 reids 里的值，这样实时性比较高。还需要一个定时对统计数量进行更新（每天只需执行一次）。</p>
+
+          
         
       
     </div>
@@ -1371,22 +1410,43 @@
       
         
           
-          说明年前我需要编写公司当年的工作总结，所以把项目里的提交日志拉出来查看，其中有几类提交是无效的也是没有意义的，整理起来十分蛋疼，所以记录下来。
-示例只有操作类型
-fix
-add
+            <h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>年前我需要编写公司当年的工作总结，所以把项目里的提交日志拉出来查看，其中有几类提交是无效的也是没有意义的，整理起来十分蛋疼，所以记录下来。</p>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><h3 id="只有操作类型"><a href="#只有操作类型" class="headerlink" title="只有操作类型"></a>只有操作类型</h3><ul>
+<li>fix</li>
+<li>add</li>
+</ul>
+<p>上面这两个可以知道是修复功能和添加功能，但是需要看代码才能知道修复的是什么，添加的是什么。</p>
+<h3 id="提交说明使用外文进行说明"><a href="#提交说明使用外文进行说明" class="headerlink" title="提交说明使用外文进行说明"></a>提交说明使用外文进行说明</h3><ul>
+<li>fix refund</li>
+</ul>
+<p>英文不好的人可能看到英文得需要想几秒，甚至需要翻译。</p>
+<h3 id="无详细说明"><a href="#无详细说明" class="headerlink" title="无详细说明"></a>无详细说明</h3><ul>
+<li>严重BUG修复</li>
+<li>退货退款时间记录</li>
+</ul>
+<p>虽然知道是修复严重 BUG，但是 BUG 是什么功能，为什么是严重 BUG 并不知道。而第二种虽然没多大毛病，但改成 “补充遗漏退货退款完成时间” 会更好些。</p>
+<h3 id="多个功能混在一起提交"><a href="#多个功能混在一起提交" class="headerlink" title="多个功能混在一起提交"></a>多个功能混在一起提交</h3><ol>
+<li>修改xxx</li>
+<li>添加xxx</li>
+<li>去除xxx</li>
+</ol>
+<p>不建议这样子提交，但是后面回顾代码的时候区分不出每个项对应的内容。不要怕提交条数多，如果需要审阅代码就知道分开提交的好处了。</p>
+<h3 id="无意义的说明"><a href="#无意义的说明" class="headerlink" title="无意义的说明"></a>无意义的说明</h3><ul>
+<li>修复 xxx 文件</li>
+</ul>
+<p>提交记录里会记录当次提交的所有文件，没有说明的意义。</p>
+<h3 id="使用-GitHub-issues-的方式提交"><a href="#使用-GitHub-issues-的方式提交" class="headerlink" title="使用 GitHub issues 的方式提交"></a>使用 GitHub issues 的方式提交</h3><ul>
+<li>fix issues #894</li>
+</ul>
+<p>这种提交是模仿 GitHub 上的提交方式，它会自动关联上指定的 issues，对直接在 GitHub 上审阅代码时很好用。但是对于完全独立的代码仓库来说，会不知道具体的问题是什么。可以保留这个方式写在说明第二行即可。gogs 也有类似的功能。但对于禅道，这种没有关联的来说，完全没有必要记录上去。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ol>
+<li>对提交进行分类</li>
+<li>统一提交格式</li>
+<li>过段时间回来查看提交记录还能看明白提交说明，那就代表说明表述上没有问题</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">feat: xxx 功能</span><br><span class="line">详细说明：</span><br><span class="line"></span><br><span class="line">fix: xxx 功能的 xxx 问题</span><br><span class="line">详细说明：</span><br><span class="line">关联issues：#123</span><br><span class="line"></span><br><span class="line">del: xxx 功能[的弃用 xxx 方法]</span><br><span class="line">详细说明：</span><br><span class="line"></span><br><span class="line">adjust: xxx 功能[的 xxx]</span><br><span class="line">详细说明：</span><br><span class="line"></span><br><span class="line">[] 可选的内容</span><br></pre></td></tr></table></figure>
 
-上面这两个可以知道是修复功能和添加功能，但是需要看代码才能知道修复的是什么，添加的是什么。
-提交说明使用外文进行说明
-f
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/工具/git-think/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
         
       
     </div>
@@ -1536,18 +1596,30 @@ f
       
         
           
-          说明很多软件，系统都会有着自己的日志，记录日志的主要目的是什么呢。
-日志可以记录谁谁谁在什么时候做了什么事情，这些记录可以让我们知道用户是怎么操作系统报的错误。可用来找错也可以通过一些日志分析软件去分析，最近用户做那些操作比较多。搜索什么关键词比较多，有利于运营的策略制定。可用来分析
-例子
-wind
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/概念/log/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>很多软件，系统都会有着自己的日志，记录日志的主要目的是什么呢。</p>
+<p>日志可以记录谁谁谁在什么时候做了什么事情，这些记录可以让我们知道用户是怎么操作系统报的错误。可用来找错<br>也可以通过一些日志分析软件去分析，最近用户做那些操作比较多。搜索什么关键词比较多，有利于运营的策略制定。可用来分析</p>
+<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><p><img src="/img/log/1972432088-5bf8be7c45531_articlex.jpg" alt="windows 事件查看器"></p>
+<p>windows 事件查看器里的 windows日志是一个很好的例子。<br>它分为应用程序日志，安全日志，系统日志</p>
+<p>应用程序日志：主要记录系统软件应用的错误<br>安全日志：比较敏感的系统操作，如管理员登录，修改密码<br>系统日志：系统相关的操作，如windows的服务操作</p>
+<p>所有的日志都记录了<br>错误级别，日期时间，来源，任务类型，系统用户，计算机，日志内容</p>
+<p>通过日志记录的内容，可以轻易的得知软件的错误是什么。</p>
+<p>它还提供了筛选和排序的功能，方便我们去查找错误。</p>
+<h2 id="基础概念"><a href="#基础概念" class="headerlink" title="基础概念"></a>基础概念</h2><p>主要记录的日志内容<br>    错误级别<br>    日期时间<br>    来源<br>        IP<br>        项目名<br>    任务类型<br>    日志内容<br>        操作内容的简写<br>        用户的请求参数，可用 json</p>
+<p>项目的日志没有windows日志里的那么细，因为我们面对的范围比它小太多了，有些内容就没有必要记录</p>
+<p>记录格式<br>    json：这个可以很好的区分数据是那一项里面的，但是在直接查看上不是很直观，需要取出转格式，有些内容还会有换行的。<br>    字符串：直接查看日志文件比较直观，但是如果需要导入分析工具时，需要写正则一项项匹配出来，再导入</p>
+<p>日志存储方式<br>    数据库<br>        个人十分不推荐的记录方式，因为日志只要有人访问程序就会写库。访问少倒无所谓，访问大会大量消耗数据库的性能<br>        写数据库慢，高并发的时候会锁表<br>    文件<br>        这个比数据库好很多，也比较传统的做法。会占用系统IO，写操作太多时会导致系统卡顿。不考虑被攻击时可直接使用<br>        统计和查找没有数据库那么功能丰富，可以直接导至分析系统中进行操作。<br>        扩展：知道自己服务器的 IO 写入速率，去估算每分钟可以写多少日志，<br>            假如服务器写入速率是 100k/s<br>            其他软件预计占用 30k/s<br>            去除容差 20k/s<br>            那可用的是 50k/s<br>            每分钟可写 51200b 的日志<br>            再设每条日志 500b<br>            那每分钟级最多可写102条日志<br>    内存<br>        读写速度很快，但是内存一般不会很大，普遍4g以上。去除其他应用的内存开销，可用的内存并不多。可以定时转存到日志文件中</p>
+<p>除了数据库不推荐外，使用文件还是使用内存的可能通过写入条数进行估算。使用什么方式</p>
+<h2 id="程序实现"><a href="#程序实现" class="headerlink" title="程序实现"></a>程序实现</h2><p>规范<br>    php 的 <a href="https://laravel-china.org/docs/psr/psr-3-logger-interface/1607" target="_blank" rel="noopener">psr-3</a></p>
+<p>难点：</p>
+<pre><code>1. 要记日志的地方那么多，怎么对其进行简化操作
+    通过URL匹配来记录大概操作
+    通过php异常处理记录错误日志，与 [上一期文章](https://segmentfault.com/a/1190000016824772) 关联
+    特殊的需求做直接记录处理，如：搜索关键词词频统计最近热门关键词
+</code></pre><p>管理<br>    elk: elsticsearch + logstash + kibana 比较流行的一套日志分析系统<br>    自制管理系统</p>
+<h2 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2><p>日志不管是对系统还是对个人来说都是很有必要存在的东西。</p>
+<p>身边的事物总会在某个时间点消逝，我们需要珍惜，留有美好的记忆，<br>去记录它，直到某天返回翻看，回忆起当时留有的酸甜苦辣。</p>
+
+          
         
       
     </div>
@@ -1697,19 +1769,70 @@ wind
       
         
           
-          引出如果你调一个类，调用时数据验证时报了个错，你会以什么方式返回
-数组，布尔值？
-数组这个可以带错误原因回来，那布尔值呢？
-返回了个 false, 报错时把错误放在类变量里？还是专门用一个获取错误的方法进行获取？
-上面说的情况是代码完全没有问题的情况。那如果是一些第三方的工具包，你又怎么知道他里面的
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/深入/php-exception/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <h2 id="引出"><a href="#引出" class="headerlink" title="引出"></a>引出</h2><p>如果你调一个类，调用时数据验证时报了个错，你会以什么方式返回</p>
+<p>数组，布尔值？</p>
+<p>数组这个可以带错误原因回来，那布尔值呢？</p>
+<p>返回了个 false, 报错时把错误放在类变量里？<br>还是专门用一个获取错误的方法进行获取？</p>
+<p>上面说的情况是代码完全没有问题的情况。<br>那如果是一些第三方的工具包，你又怎么知道他里面的执行会不会导致整个系统崩溃。</p>
+<p>你说本地运行是没问题的，环境这种东西不好说。</p>
+<p>所以我们就用到了 异常 这个东西</p>
+<p>下面是我们需要了解的问题</p>
+<p>什么时候抛异常？怎么接异常？异常要怎么处理？他的使用场景又是什么？</p>
+<h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><ol>
+<li><p>基础操作</p>
+<p> try … catch()<br> throw</p>
+</li>
+<li><p><a href="http://php.net/manual/zh/errorfunc.constants.php" target="_blank" rel="noopener">错误级别</a></p>
+<p> 致命错误 E_ERROR，<br> 语法错误 E_PARSE，<br> 警告错误 E_WARNING，<br> 通知错误 E_NOTICE</p>
+</li>
+<li><p>php异常处理类</p>
+</li>
+</ol>
+<p><a href="http://php.net/manual/zh/reserved.exceptions.php" target="_blank" rel="noopener">预定义异常</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">* ErrorException (extends Exception)</span><br></pre></td></tr></table></figure>
+<p><a href="http://php.net/manual/zh/spl.exceptions.php" target="_blank" rel="noopener">SPL异常类</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">* LogicException (extends Exception)      // 表示程序逻辑中的错误的异常。这种异常应该直接在代码中的修复</span><br><span class="line">    * BadFunctionCallException            // 回调调用未定义的函数或缺少一些参数时会抛出该异常</span><br><span class="line">        * BadMethodCallException          // 回调方法是一个未定义的方法或缺失一些参数时会抛出该异常</span><br><span class="line">    * DomainException                     // 值不遵守定义的有效数据域时会抛出该异常</span><br><span class="line">    * InvalidArgumentException            // 参数不是预期类型时会抛出该异常</span><br><span class="line">    * LengthException                     // 长度无效时会抛出该异常</span><br><span class="line">    * OutOfRangeException                 // 请求非法索引时引发的异常，这应该在编译时就检测到的错误</span><br><span class="line"></span><br><span class="line">* RuntimeException (extends Exception)    // 在运行时发生的错误会抛出该异常</span><br><span class="line">    * OutOfBoundsException                // 值不是有效键时会抛出该异常，这表示在编译时无法检测到的错误</span><br><span class="line">    * OverflowException                   // 在向完整容器中添加元素时引发的异常</span><br><span class="line">    * RangeException                      // 在程序执行期间为指示范围错误而引发的异常。通常这意味着除了/overflow以外还有一个算术错误。这是运行时的DomainException版本</span><br><span class="line">    * UnderflowException                  // 在空容器上执行无效操作(如删除元素)时引发的异常</span><br><span class="line">    * UnexpectedValueException            // 值与一组值不匹配时会抛出该异常。通常，当一个函数调用另一个函数并期望返回值为某种类型或值(不包括算术或缓冲区相关错误)时，就会发生这种情况</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>异常处理相关函数</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">error_reporting // 设置报告的错误级别</span><br><span class="line">register_shutdown_function // 注册一个会在php中止时执行的函数</span><br><span class="line">set_error_handler // 设置用户自定义的错误处理函数</span><br><span class="line">set_exception_handler // 设置用户自定义的异常处理函数</span><br><span class="line">error_get_last // 获取最后发生的错误</span><br></pre></td></tr></table></figure>
+<h2 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h2><ol>
+<li><p>系统</p>
+<p> 主要抓的是无法预测的错误，统一返回，没有使用 try…catch 接收的异常直接跳进设置的方法中</p>
+</li>
+</ol>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">App</span>\<span class="title">Exception</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">use</span> <span class="title">Exception</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 异常句柄（入口）类</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Handler</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="comment">// 默认错误处理</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="function"><span class="keyword">function</span> <span class="title">errorHandler</span><span class="params">($errno, $errstr, $errfile = <span class="string">''</span>, $errline = <span class="number">0</span>)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 默认异常处理</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="function"><span class="keyword">function</span> <span class="title">exceptionHandler</span><span class="params">($ex)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">throw</span> $ex;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Order $e) &#123;</span><br><span class="line">            <span class="keyword">echo</span> <span class="string">"订单异常"</span>;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Goods $e) &#123;</span><br><span class="line">            <span class="keyword">echo</span> <span class="string">"商品异常"</span>;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (User $e) &#123;</span><br><span class="line">            <span class="keyword">echo</span> <span class="string">"用户异常"</span>;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (<span class="keyword">Exception</span> $e) &#123;</span><br><span class="line">            <span class="keyword">echo</span> <span class="string">"其他异常"</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 致命错误处理</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="function"><span class="keyword">function</span> <span class="title">fatalErrorHandler</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> ($e = error_get_last()) &#123;</span><br><span class="line">            print_r($e);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 订单异常</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Order</span> <span class="keyword">extends</span> <span class="title">Exception</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 商品异常</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Goods</span> <span class="keyword">extends</span> <span class="title">Exception</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 用户异常</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span> <span class="keyword">extends</span> <span class="title">Exception</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">// 入口文件中</span></span><br><span class="line"></span><br><span class="line">error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);</span><br><span class="line"></span><br><span class="line">register_shutdown_function(<span class="keyword">array</span>(<span class="string">'App\\Exception\\Handler'</span>, <span class="string">'fatalErrorHandler'</span>));</span><br><span class="line"></span><br><span class="line">set_error_handler(<span class="keyword">array</span>(<span class="string">'App\\Exception\\Handler'</span>, <span class="string">'errorHandler'</span>));</span><br><span class="line"></span><br><span class="line">set_exception_handler(<span class="keyword">array</span>(<span class="string">'App\\Exception\\Handler'</span>, <span class="string">'exceptionHandler'</span>));</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li><p>工具</p>
+<p> 定义自定义的异常，一有错误直接抛出。使用工具的程序只需通过 Exception 接收异常即可, 所有异常都通过这个进行处理的</p>
+</li>
+</ol>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">Testlin</span>\<span class="title">Db</span>\<span class="title">Exception</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">use</span> <span class="title">Exception</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">ExceptionInterface</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Db</span> <span class="keyword">extends</span> <span class="title">Exception</span> <span class="keyword">implements</span> <span class="title">ExceptionInterface</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Pdo</span> <span class="keyword">extends</span> <span class="title">Db</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">Testlin</span>\<span class="title">Db</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">use</span> <span class="title">Exception</span>;</span><br><span class="line"><span class="keyword">use</span> <span class="title">Testlin</span>\<span class="title">Db</span>\<span class="title">Exception</span>\<span class="title">Pdo</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Db</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">protected</span> $db;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">($config)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;db = <span class="keyword">new</span> PDO($config);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">$this</span>-&gt;db == <span class="keyword">false</span>) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> Pdo(<span class="string">"连接失败"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="文章例子"><a href="#文章例子" class="headerlink" title="文章例子"></a>文章例子</h2><ol>
+<li><a href="https://github.com/test-lin/pack_demo" target="_blank" rel="noopener">工具包例子</a></li>
+<li><a href="https://github.com/test-lin/project_demo" target="_blank" rel="noopener">项目例子</a></li>
+</ol>
+<h2 id="FQA"><a href="#FQA" class="headerlink" title="FQA"></a>FQA</h2><p>1、为什么要定自定义异常类, 系统不是已经给了很多选择，而且很多 composer 包里都只是继承一下。</p>
+<p>答：其实自定义异常是为了用区分异常颗粒度的，比如</p>
+<p>我定了 订单异常，商品异常，用户异常 类，但是 订单里的异常多种多样，比如订单支付异常，订单生成异常。</p>
+<pre><code>* RuntimeException (extends Exception)
+    * Order
+        * Paymen
+        * Created
+    * Goods
+    * User
+        * Withdraw
+</code></pre><p>当项目抛出异常时</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        $param = []; <span class="comment">// 操作那个方法时传的参数</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">throw</span> App\<span class="keyword">Exception</span>\Order\Payment::forParam(<span class="string">'执行xxx操作异常'</span>, $param);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (<span class="keyword">Exception</span> $e) &#123;</span><br><span class="line">        <span class="comment">// 相关操作</span></span><br><span class="line">        get_class($e); <span class="comment">// 当前异常类 App\Exception\Order\Payment</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>通过异常类名，我们可以知道是订单支付异常。这里可以代替错误号，而且更清晰明了</p>
+<p>2、为什么有一些 composer 包里的自定义异常，有的有很多方法。有什么用处吗？</p>
+<p><strong>作用1：格式化异常</strong></p>
+<p>比如：抛出的异常提示是 “id=xx 的用户不存在”，我们会有以下两种写法</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 普通操作</span></span><br><span class="line">$id = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">throw</span> <span class="keyword">new</span> Payment(<span class="string">"id=&#123;$id&#125; 的用户不存在"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 格式化异常</span></span><br><span class="line"><span class="keyword">use</span> <span class="title">App</span>\<span class="title">Exception</span>\<span class="title">Order</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Payment</span> <span class="keyword">extends</span> <span class="title">Order</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="function"><span class="keyword">function</span> <span class="title">forId</span><span class="params">($id)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">self</span>(sprintf(</span><br><span class="line">            <span class="string">'id=%s 的用户不存在'</span>,</span><br><span class="line">            $id</span><br><span class="line">        ));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$id = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">throw</span> Payment::forId($id);</span><br></pre></td></tr></table></figure>
+<p><strong>作用2：组件级别的异常</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">Testlin</span>\<span class="title">Db</span>\<span class="title">Exception</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">use</span> <span class="title">Exception</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">ExceptionInterface</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Mysqli</span> <span class="keyword">extends</span> <span class="title">Exception</span> <span class="title">impements</span> <span class="title">ExceptionInterface</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Pdo</span> <span class="keyword">extends</span> <span class="title">Exception</span> <span class="title">impements</span> <span class="title">ExceptionInterface</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> Testlin\Db\<span class="keyword">Exception</span>\Mysqli(<span class="string">'sql 执行失败'</span>);</span><br><span class="line">&#125; <span class="keyword">catch</span> (Testlin\Db\<span class="keyword">Exception</span>\ExceptionInterface $e) &#123;</span><br><span class="line">    <span class="comment">// 这里取得的异常只会是继承这个接口的异常</span></span><br><span class="line">    <span class="comment">// 可以只针对这个工具包进行处理</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
         
       
     </div>
@@ -1859,23 +1982,46 @@ wind
       
         
           
-          环境
-windows
-nginx
-php
-composer
+            <h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><ul>
+<li>windows</li>
+<li>nginx</li>
+<li>php</li>
+<li>composer</li>
+</ul>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>拉取 satis 项目包，并拉取项目依赖</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">composer create-project composer/satis --stability=dev</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> satis</span><br><span class="line"></span><br><span class="line">composer install</span><br></pre></td></tr></table></figure>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>修改 satis/config.json 文件，文件内容如下</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"name"</span>: <span class="string">"composer 本地仓库"</span>,</span><br><span class="line">    "homepage": "http://packages.example.org", // 访问域名</span><br><span class="line">    "repositories": [// 要拉取包的仓库地址</span><br><span class="line">        &#123; "type": "vcs", "url": "https://github.com/test-lin/db.git" &#125;,</span><br><span class="line">        &#123; "type": "vcs", "url": "https://github.com/test-lin/queue.git" &#125;,</span><br><span class="line">        &#123; "type": "vcs", "url": "https://github.com/test-lin/cache.git" &#125;,</span><br><span class="line">        &#123; <span class="attr">"type"</span>: <span class="string">"vcs"</span>, <span class="attr">"url"</span>: <span class="string">"http://192.168.6.251:3000/php/xjwSpider.git"</span> &#125;</span><br><span class="line">    ],</span><br><span class="line">    "require": &#123; // 要拉取到本地的包文件 注：不会包含包的依赖</span><br><span class="line">        "test-lin/db": "*",</span><br><span class="line">        "test-lin/queue": "*",</span><br><span class="line">        "test-lin/cache": "*",</span><br><span class="line">        "php/xjwSpider": "*"</span><br><span class="line">    &#125;,</span><br><span class="line">    "archive": &#123;</span><br><span class="line">        "directory": "dist",</span><br><span class="line">        "format": "tar",</span><br><span class="line">        "prefix-url": "http://packages.example.org" // * 这个参数是当前项目的域名，作用是以zip压缩包的方式直接下载包文件</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="拉取包到本地仓库"><a href="#拉取包到本地仓库" class="headerlink" title="拉取包到本地仓库"></a>拉取包到本地仓库</h2><p>web/ 是本地仓库访问地址。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php bin/satis build config.json web/</span><br></pre></td></tr></table></figure>
+<p>如果需要定时更新，则需要配置定时任务去定时更新</p>
+<h2 id="设置本地仓库"><a href="#设置本地仓库" class="headerlink" title="设置本地仓库"></a>设置本地仓库</h2><p>nginx 设置虚拟主机</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    server_name packages.example.org;</span><br><span class="line">    root /var/www/satis/web;</span><br><span class="line">    index index.php index.html;</span><br><span class="line"></span><br><span class="line">    location ~* \.php$ &#123;</span><br><span class="line">        include fastcgi_params;</span><br><span class="line">        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;</span><br><span class="line">        fastcgi_pass 127.0.0.1:9000;</span><br><span class="line">        fastcgi_index index.php;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="使用本地仓库中的包"><a href="#使用本地仓库中的包" class="headerlink" title="使用本地仓库中的包"></a>使用本地仓库中的包</h2><p>composer.json 文件中添加以下 json 拉取，即可获取本地库了.</p>
+<p>如果本地仓库不存在且有网络会去网络中获取。repositories 参数可以设置多个</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"repositories"</span>: [&#123;</span><br><span class="line">    <span class="attr">"type"</span>: <span class="string">"composer"</span>,</span><br><span class="line">    <span class="attr">"url"</span>: <span class="string">"http://packages.example.org"</span></span><br><span class="line">  &#125;]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="FQA"><a href="#FQA" class="headerlink" title="FQA"></a>FQA</h2><h3 id="1-github-的包需要配置-token"><a href="#1-github-的包需要配置-token" class="headerlink" title="1. github 的包需要配置 token"></a>1. github 的包需要配置 token</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Could not fetch https://api.github.com/repos/test-lin/db/git/refs/heads?per_page=100, please create a GitHub OAuth token to go over the API rate limit</span><br><span class="line">Head to https://github.com/settings/tokens/new?scopes=repo&amp;description=Composer+on+packages.example.org+2018-06-28+0310</span><br><span class="line">to retrieve a token. It will be stored in "/home/vagrant/.config/composer/auth.json" for future use by Composer.</span><br></pre></td></tr></table></figure>
+<p>解决方法：</p>
+<p>访问命令行中提示的 <code>https://github.com/settings/tokens/new?scopes=repo&amp;description=Composer+on+packages.example.org+2018-06-28+0310</code></p>
+<p>复制 token description 文本框中内容</p>
+<p>拉到页底 点击 generate token</p>
+<p>在命令行中粘贴复制内容确认限可</p>
+<h3 id="2-私有包，拉取不了"><a href="#2-私有包，拉取不了" class="headerlink" title="2. 私有包，拉取不了"></a>2. 私有包，拉取不了</h3><p>解决方法：</p>
+<p>本地生成 ssh key ，配置到要拉取项目的平台即可，免密拉取了</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa</span><br><span class="line"></span><br><span class="line">cat ~/.ssh/id_rsa.pub</span><br></pre></td></tr></table></figure>
+<p>以 gogs 为例</p>
+<p><img src="/img/composer/1.jpg" alt></p>
+<h3 id="3-composer-不支持-http"><a href="#3-composer-不支持-http" class="headerlink" title="3. composer 不支持 http"></a>3. composer 不支持 http</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Your configuration does not allow connections to http://192.168.6.251:3000/php/xjwSpider.git. See https://getcomposer.org/doc/06-config.md#secure-http for details.</span><br></pre></td></tr></table></figure>
+<p>解决方法：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">composer config -g secure-http <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<h3 id="4-拉取的包-composer-json-配置有误"><a href="#4-拉取的包-composer-json-配置有误" class="headerlink" title="4. 拉取的包 composer.json 配置有误"></a>4. 拉取的包 composer.json 配置有误</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[Composer\Repository\InvalidRepositoryException]</span><br><span class="line">No valid composer.json was found in any branch or tag of http://192.168.6.251:3000/php/xjwSpider.git, could not load a package from it.</span><br></pre></td></tr></table></figure>
+<p>解决方法：</p>
+<ol>
+<li>确保项目根部有 composer.json</li>
+<li>composer.json 里需要设置 name</li>
+</ol>
 
-安装拉取 satis 项目包，并拉取项目依赖
-12345composer create-project composer/satis --stability=devcd satiscomposer install
-配置修改 satis/c
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/工具/composer-local-repository/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
         
       
     </div>
@@ -2036,13 +2182,14 @@ composer
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">jani</span>
 
   
+  <a href="http://www.miitbeian.gov.cn/">粤ICP备17086938号-1</a>
 </div>
 
 
